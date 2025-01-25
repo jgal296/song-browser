@@ -1,178 +1,179 @@
 /* Basic reset */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* Sidebar Navigation */
-#sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 200px;
-    height: 100%;
-    background-color: #333;
-    color: #fff;
-    display: flex;
-    flex-direction: column;
-    padding-top: 60px;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-    transform: translateX(-100%); /* Default: Hidden off-screen */
-    transition: transform 0.3s ease; /* Smooth sliding */
-}
-
-/* Sidebar Visible (When open) */
-#sidebar.open {
-    transform: translateX(0); /* Slide in from the left */
-}
-
-#sidebar ul {
-list-style: none;         /* Remove bullets */
-padding: 0;
-margin: 0;
-}
-
-#sidebar ul li {
-margin: 10px 0;           /* Add space between buttons */
-}
-
-#sidebar ul li a {
-color: #fff;              /* Button text color */
-text-decoration: none;    /* Remove underline */
-padding: 10px 15px;       /* Button padding */
-display: block;           /* Make the links fill the container */
-border-radius: 5px;       /* Optional: Rounded edges */
-transition: background-color 0.3s ease; /* Smooth hover effect */
-}
-
-#sidebar ul li a:hover {
-background-color: #575757; /* Darker color on hover */
-}
-
-html, body {
-    height: 100%;                 /* Ensure full height of the viewport */
-    margin: 0;                    /* Remove any default margin */
-    overflow: hidden;             /* Prevent scrolling */
-}
-
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-image: url('background.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    height: 100vh;
     margin: 0;
-}
-
-
-#landing-page {
-    display: flex;
-    flex-direction:column;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    max-width: 90%;
-    width: 320px;
-}
-
-#logo {
-    width: 200px;
-    height: auto;
-    margin-bottom: 20px;
-}
-
-h1 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-}
+    padding: 0;
+    box-sizing: border-box;
+  }
   
-p {
-    font-size: 1rem;
-    margin-bottom: 20px;
-    }
-
-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-button:hover {
-    background-color: #45a049;
-}
-
-button:active {
-    background-color: #3e8e41;
-}
-
-#version {
-    position: fixed;
-    top: 10px;                   
-    right: 10px;                 
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;                
-    padding: 5px 10px;
-    font-size: 12px;             
-    border-radius: 5px;          
-    z-index: 9999;               
-}
-
-  .song {
-    margin-bottom: 20px; /* Adds space between audio containers */
-    padding: 10px;       /* Optional: Adds padding inside the container */
-    background-color: rgba(0, 0, 0, 0.05); /* Optional: Adds a subtle background */
-    border-radius: 8px;  /* Optional: Rounded corners */
-}
-
-  #songs-page {
-    padding: 20px;       /* Adds space around the entire page */
-}
-
-/* Hamburger Menu */
-#menu-toggle {
-    display: block;
-    position: fixed;
-    top: 10px;
-    left: 10px;
-    background-color: #333;
-    color: #fff;
-    border: none;
-    font-size: 24px;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    z-index: 1000;
-}
-
-/* Media Query for Mobile */
-@media (max-width: 768px) {
-    #sidebar {
+  /* Sidebar Navigation */
+  #sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
       width: 200px;
-      transform: translateX(-100%); /* Hidden by default */
-    }
+      height: 100%;
+      background-color: #333;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      padding-top: 70px; /* Add space below the hamburger */
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+      transform: translateX(-100%); /* Default: Hidden off-screen */
+      transition: transform 0.3s ease; /* Smooth sliding */
+      z-index: 999; /* Ensure it's above main content */
+  }
   
-    #main-content {
-      margin-left: 0; /* No space for the sidebar */
-    }
+  /* Sidebar Visible (When open) */
+  #sidebar.open {
+      transform: translateX(0); /* Slide in from the left */
+  }
   
-    #menu-toggle {
-      display: block; /* Show hamburger menu */
-    }
+  #sidebar ul {
+      list-style: none; /* Remove bullets */
+      padding: 0;
+      margin: 0;
+  }
   
-    #sidebar.open {
-      transform: translateX(0); /* Slide in when toggled */
-    }
-}
+  #sidebar ul li {
+      margin: 10px 0; /* Add space between buttons */
+  }
+  
+  #sidebar ul li a {
+      color: #fff; /* Button text color */
+      text-decoration: none; /* Remove underline */
+      padding: 10px 15px; /* Button padding */
+      display: block; /* Make the links fill the container */
+      border-radius: 5px; /* Optional: Rounded edges */
+      transition: background-color 0.3s ease; /* Smooth hover effect */
+  }
+  
+  #sidebar ul li a:hover {
+      background-color: #575757; /* Darker color on hover */
+  }
+  
+  html, body {
+      height: 100%; /* Ensure full height of the viewport */
+      margin: 0; /* Remove any default margin */
+      overflow: hidden; /* Prevent scrolling */
+  }
+  
+  body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-image: url('background.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      height: 100vh;
+      margin: 0;
+  }
+  
+  #landing-page {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      max-width: 90%;
+      width: 320px;
+  }
+  
+  #logo {
+      width: 200px;
+      height: auto;
+      margin-bottom: 20px;
+  }
+  
+  h1 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+  }
+  
+  p {
+      font-size: 1rem;
+      margin-bottom: 20px;
+  }
+  
+  button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+  }
+  
+  button:hover {
+      background-color: #45a049;
+  }
+  
+  button:active {
+      background-color: #3e8e41;
+  }
+  
+  #version {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      padding: 5px 10px;
+      font-size: 12px;
+      border-radius: 5px;
+      z-index: 1000;
+  }
+  
+  .song {
+      margin-bottom: 20px; /* Adds space between audio containers */
+      padding: 10px; /* Optional: Adds padding inside the container */
+      background-color: rgba(0, 0, 0, 0.05); /* Optional: Adds a subtle background */
+      border-radius: 8px; /* Optional: Rounded corners */
+  }
+  
+  #songs-page {
+      padding: 20px; /* Adds space around the entire page */
+  }
+  
+  /* Hamburger Menu */
+  #menu-toggle {
+      display: block;
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      font-size: 24px;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      z-index: 1001; /* Ensure it's above sidebar */
+  }
+  
+  /* Media Query for Mobile */
+  @media (max-width: 768px) {
+      #sidebar {
+          width: 200px;
+          transform: translateX(-100%); /* Hidden by default */
+      }
+  
+      #menu-toggle {
+          display: block; /* Show hamburger menu */
+      }
+  
+      #sidebar.open {
+          transform: translateX(0); /* Slide in when toggled */
+      }
+  
+      #sidebar ul {
+          padding-top: 30px; /* Add space for mobile menu items */
+      }
+  }
+  

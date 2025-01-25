@@ -6,7 +6,6 @@
   <title>My Songs</title>
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
     <!-- Hamburger Menu -->
     <button id="menu-toggle" aria-label="Toggle menu">&#9776;</button>
@@ -14,7 +13,6 @@
     <!-- Sidebar (Loaded from external file) -->
     <div id="sidebar-container"></div>
 
-    <body>
     <!-- Landing Page Content -->
     <div id="landing-page">
         <img src="web_logo.png" alt="My Songs Logo" id="logo">
@@ -23,34 +21,34 @@
         <button id="browse-btn" onclick="location.href='songs.html'">Browse Songs</button>
     </div>
 
+    <!-- Sidebar and Script Logic -->
     <script>
         // Load the sidebar into the #sidebar-container
         fetch('sidebar.html')
           .then(response => response.text())
           .then(html => {
             document.getElementById('sidebar-container').innerHTML = html;
-    
+
             // Re-attach toggle functionality after loading
             const menuToggle = document.getElementById("menu-toggle");
             const sidebar = document.getElementById("sidebar");
             menuToggle.addEventListener("click", () => {
               sidebar.classList.toggle("open");
             });
-          });
+          })
+          .catch(error => console.error('Error loading sidebar:', error));
     </script>
 
-    <script src="script.js"></script>
-
+    <!-- Add Version Number -->
     <script src="version.js"></script>
     <script>
-    // Once the page loads, display the version number
-    window.onload = function() {
-        const versionDiv = document.createElement('div');
-        versionDiv.id = 'version';
-        versionDiv.textContent = 'Version ' + VERSION;
-        document.body.appendChild(versionDiv);
-    }
+      // Once the page loads, display the version number
+      window.onload = function() {
+          const versionDiv = document.createElement('div');
+          versionDiv.id = 'version';
+          versionDiv.textContent = 'Version ' + VERSION;
+          document.body.appendChild(versionDiv);
+      }
     </script>
-
 </body>
 </html>
