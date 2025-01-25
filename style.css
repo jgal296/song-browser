@@ -7,50 +7,54 @@
 
 /* Sidebar Navigation */
 #sidebar {
-    position: fixed;          /* Keeps the sidebar fixed on the left */
+    position: fixed;
     top: 0;
     left: 0;
-    width: 200px;             /* Width of the sidebar */
-    height: 100%;             /* Full height of the screen */
-    background-color: #333;   /* Dark background color */
-    color: #fff;              /* White text color */
+    width: 200px;
+    height: 100%;
+    background-color: #333;
+    color: #fff;
     display: flex;
-    flex-direction: column;   /* Stack the buttons vertically */
-    justify-content: flex-start;
-    padding-top: 60px;        /* Space at the top */
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    transform: translateX(0); /* Default: Fully visible */
-    transition: transform 0.3s ease; /* Smooth slide effect */
-  }
-  
-  #sidebar ul {
-    list-style: none;         /* Remove bullets */
-    padding: 0;
-    margin: 0;
-  }
-  
-  #sidebar ul li {
-    margin: 10px 0;           /* Add space between buttons */
-  }
-  
-  #sidebar ul li a {
-    color: #fff;              /* Button text color */
-    text-decoration: none;    /* Remove underline */
-    padding: 10px 15px;       /* Button padding */
-    display: block;           /* Make the links fill the container */
-    border-radius: 5px;       /* Optional: Rounded edges */
-    transition: background-color 0.3s ease; /* Smooth hover effect */
-  }
-  
-  #sidebar ul li a:hover {
-    background-color: #575757; /* Darker color on hover */
-  }
+    flex-direction: column;
+    padding-top: 60px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    transform: translateX(-100%); /* Default: Hidden off-screen */
+    transition: transform 0.3s ease; /* Smooth sliding */
+}
+
+/* Sidebar Visible (When open) */
+#sidebar.open {
+    transform: translateX(0); /* Slide in from the left */
+}
+
+#sidebar ul {
+list-style: none;         /* Remove bullets */
+padding: 0;
+margin: 0;
+}
+
+#sidebar ul li {
+margin: 10px 0;           /* Add space between buttons */
+}
+
+#sidebar ul li a {
+color: #fff;              /* Button text color */
+text-decoration: none;    /* Remove underline */
+padding: 10px 15px;       /* Button padding */
+display: block;           /* Make the links fill the container */
+border-radius: 5px;       /* Optional: Rounded edges */
+transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+#sidebar ul li a:hover {
+background-color: #575757; /* Darker color on hover */
+}
 
 html, body {
     height: 100%;                 /* Ensure full height of the viewport */
     margin: 0;                    /* Remove any default margin */
     overflow: hidden;             /* Prevent scrolling */
-  }
+}
 
 body {
     display: flex;
@@ -63,7 +67,7 @@ body {
     background-attachment: fixed;
     height: 100vh;
     margin: 0;
-  }
+}
 
 
 #landing-page {
@@ -124,22 +128,22 @@ button:active {
     font-size: 12px;             
     border-radius: 5px;          
     z-index: 9999;               
-  }
+}
 
   .song {
     margin-bottom: 20px; /* Adds space between audio containers */
     padding: 10px;       /* Optional: Adds padding inside the container */
     background-color: rgba(0, 0, 0, 0.05); /* Optional: Adds a subtle background */
     border-radius: 8px;  /* Optional: Rounded corners */
-  }
+}
 
   #songs-page {
     padding: 20px;       /* Adds space around the entire page */
-  }
+}
 
-  /* Hamburger Menu */
+/* Hamburger Menu */
 #menu-toggle {
-    display: none; /* Hidden by default */
+    display: block;
     position: fixed;
     top: 10px;
     left: 10px;
@@ -151,7 +155,7 @@ button:active {
     border-radius: 5px;
     cursor: pointer;
     z-index: 1000;
-  }
+}
 
 /* Media Query for Mobile */
 @media (max-width: 768px) {
@@ -171,4 +175,4 @@ button:active {
     #sidebar.open {
       transform: translateX(0); /* Slide in when toggled */
     }
-  }
+}
