@@ -5,6 +5,45 @@
   box-sizing: border-box;
 }
 
+/* Sidebar Navigation */
+#sidebar {
+    position: fixed;          /* Keeps the sidebar fixed on the left */
+    top: 0;
+    left: 0;
+    width: 200px;             /* Width of the sidebar */
+    height: 100%;             /* Full height of the screen */
+    background-color: #333;   /* Dark background color */
+    color: #fff;              /* White text color */
+    display: flex;
+    flex-direction: column;   /* Stack the buttons vertically */
+    justify-content: flex-start;
+    padding-top: 20px;        /* Space at the top */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  }
+  
+  #sidebar ul {
+    list-style: none;         /* Remove bullets */
+    padding: 0;
+    margin: 0;
+  }
+  
+  #sidebar ul li {
+    margin: 10px 0;           /* Add space between buttons */
+  }
+  
+  #sidebar ul li a {
+    color: #fff;              /* Button text color */
+    text-decoration: none;    /* Remove underline */
+    padding: 10px 15px;       /* Button padding */
+    display: block;           /* Make the links fill the container */
+    border-radius: 5px;       /* Optional: Rounded edges */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+  }
+  
+  #sidebar ul li a:hover {
+    background-color: #575757; /* Darker color on hover */
+  }
+
 html, body {
     height: 100%;                 /* Ensure full height of the viewport */
     margin: 0;                    /* Remove any default margin */
