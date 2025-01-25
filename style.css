@@ -6,6 +6,9 @@
 }
 
 body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-image: url('background.png');
     background-size: cover;
     background-position: center;
@@ -15,16 +18,16 @@ body {
     margin: 0;
   }
 
-/*
+
 #landing-page {
-    background-color: white;
-    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 30px;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     max-width: 90%;
     width: 320px;
 }
-*/
+
 #logo {
     width: 100px;
     height: auto;
