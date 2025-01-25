@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Hamburger Menu -->
+    <button id="menu-toggle" aria-label="Toggle menu">&#9776;</button>
+
+    <!-- Sidebar (Loaded from external file) -->
+    <div id="sidebar-container"></div>
+
+    <script>
+        // Load the sidebar into the #sidebar-container
+        fetch('sidebar.html')
+        .then(response => response.text())
+        .then(html => {
+            document.getElementById('sidebar-container').innerHTML = html;
+
+            // Re-attach toggle functionality after loading
+            const menuToggle = document.getElementById("menu-toggle");
+            const sidebar = document.getElementById("sidebar");
+            menuToggle.addEventListener("click", () => {
+            sidebar.classList.toggle("open");
+            });
+        });
+    </script>
+
+    <!-- About Page Content -->
+    <div id="about-page">
+        <h1>About My Songs</h1>
+        <p>Welcome to the "About" page! Here you can learn more about me and my music.</p>
+        <p>I like to make beats and stuff.</p>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="version.js"></script>
+</body>
+</html>
