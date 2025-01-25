@@ -10,15 +10,9 @@
 <body>
     <!-- Hamburger Menu -->
     <button id="menu-toggle" aria-label="Toggle menu">&#9776;</button>
-    
-    <!-- Left Navigation Bar -->
-    <nav id="sidebar">
-    <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="#">Button 2</a></li>
-        <li><a href="#">Button 3</a></li>
-    </ul>
-    </nav>
+
+    <!-- Sidebar (Loaded from external file) -->
+    <div id="sidebar-container"></div>
 
     <body>
     <!-- Landing Page Content -->
@@ -28,6 +22,22 @@
         <p>Click the button below to browse through the songs I've created.</p>
         <button id="browse-btn" onclick="location.href='songs.html'">Browse Songs</button>
     </div>
+
+    <script>
+        // Load the sidebar into the #sidebar-container
+        fetch('sidebar.html')
+          .then(response => response.text())
+          .then(html => {
+            document.getElementById('sidebar-container').innerHTML = html;
+    
+            // Re-attach toggle functionality after loading
+            const menuToggle = document.getElementById("menu-toggle");
+            const sidebar = document.getElementById("sidebar");
+            menuToggle.addEventListener("click", () => {
+              sidebar.classList.toggle("open");
+            });
+          });
+    </script>
 
     <script src="script.js"></script>
 
