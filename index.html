@@ -7,35 +7,40 @@
   <link rel="stylesheet" href="style.css">
 </head>
 
-<!-- Left Navigation Bar -->
-<nav id="sidebar">
-<ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="#">Button 2</a></li>
-    <li><a href="#">Button 3</a></li>
-</ul>
-</nav>
-
 <body>
-  <!-- Landing Page Content -->
-  <div id="landing-page">
-    <img src="web_logo.png" alt="My Songs Logo" id="logo">
-    <h1>Welcome to My Songs!</h1>
-    <p>Click the button below to browse through the songs I've created.</p>
-    <button id="browse-btn" onclick="location.href='songs.html'">Browse Songs</button>
-  </div>
+    <!-- Hamburger Menu -->
+    <button id="menu-toggle" aria-label="Toggle menu">&#9776;</button>
+    
+    <!-- Left Navigation Bar -->
+    <nav id="sidebar">
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#">Button 2</a></li>
+        <li><a href="#">Button 3</a></li>
+    </ul>
+    </nav>
 
-  <script src="script.js"></script>
+    <body>
+    <!-- Landing Page Content -->
+    <div id="landing-page">
+        <img src="web_logo.png" alt="My Songs Logo" id="logo">
+        <h1>Welcome to My Songs!</h1>
+        <p>Click the button below to browse through the songs I've created.</p>
+        <button id="browse-btn" onclick="location.href='songs.html'">Browse Songs</button>
+    </div>
+
+    <script src="script.js"></script>
+
+    <script src="version.js"></script>
+    <script>
+    // Once the page loads, display the version number
+    window.onload = function() {
+        const versionDiv = document.createElement('div');
+        versionDiv.id = 'version';
+        versionDiv.textContent = 'Version ' + VERSION;
+        document.body.appendChild(versionDiv);
+    }
+    </script>
+
 </body>
 </html>
-
-<script src="version.js"></script>
-<script>
-  // Once the page loads, display the version number
-  window.onload = function() {
-    const versionDiv = document.createElement('div');
-    versionDiv.id = 'version';
-    versionDiv.textContent = 'Version ' + VERSION;
-    document.body.appendChild(versionDiv);
-  }
-</script>

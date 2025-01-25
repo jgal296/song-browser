@@ -19,6 +19,8 @@
     justify-content: flex-start;
     padding-top: 20px;        /* Space at the top */
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transform: translateX(0); /* Default: Fully visible */
+    transition: transform 0.3s ease; /* Smooth slide effect */
   }
   
   #sidebar ul {
@@ -133,4 +135,40 @@ button:active {
 
   #songs-page {
     padding: 20px;       /* Adds space around the entire page */
+  }
+
+  /* Hamburger Menu */
+#menu-toggle {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    font-size: 24px;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1000;
+  }
+
+/* Media Query for Mobile */
+@media (max-width: 768px) {
+    #sidebar {
+      width: 200px;
+      transform: translateX(-100%); /* Hidden by default */
+    }
+  
+    #main-content {
+      margin-left: 0; /* No space for the sidebar */
+    }
+  
+    #menu-toggle {
+      display: block; /* Show hamburger menu */
+    }
+  
+    #sidebar.open {
+      transform: translateX(0); /* Slide in when toggled */
+    }
   }
