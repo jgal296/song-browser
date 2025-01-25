@@ -84,3 +84,14 @@ button:active {
     border-radius: 5px;          
     z-index: 9999;               
   }
+
+  .song {
+    margin-bottom: 20px; /* Adds space between audio containers */
+    padding: 10px;       /* Optional: Adds padding inside the container */
+    background-color: rgba(0, 0, 0, 0.05); /* Optional: Adds a subtle background */
+    border-radius: 8px;  /* Optional: Rounded corners */
+  }
+
+  #songs-page {
+    padding: 20px;       /* Adds space around the entire page */
+  }
