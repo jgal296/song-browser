@@ -7,3 +7,27 @@ const sidebar = document.getElementById("sidebar");
 menuToggle.addEventListener("click", () => {
   sidebar.classList.toggle("open");
 });
+
+// Page transitions
+document.addEventListener("DOMContentLoaded", () => {
+    const links = document.querySelectorAll("a"); // Select all links
+  
+    links.forEach(link => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault(); // Prevent default navigation
+  
+        // Add fade-out class to main content
+        const mainContent = document.getElementById("main-content");
+        mainContent.classList.add("fade-out");
+  
+        // Wait for the animation to finish (500ms)
+        setTimeout(() => {
+          window.location.href = link.href; // Navigate to the new page
+        }, 500);
+      });
+    });
+  
+    // Apply fade-in animation when the page loads
+    const mainContent = document.getElementById("main-content");
+    mainContent.classList.add("fade-in");
+});

@@ -7,48 +7,75 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Hamburger Menu -->
-    <button id="menu-toggle" aria-label="Toggle menu">&#9776;</button>
+  <!-- Hamburger Menu -->
+  <button id="menu-toggle" aria-label="Toggle menu">&#9776;</button>
 
-    <!-- Sidebar (Loaded from external file) -->
-    <div id="sidebar-container"></div>
+  <!-- Sidebar (Loaded from external file) -->
+  <div id="sidebar-container"></div>
 
+  <!-- Main Content -->
+  <div id="main-content">
     <!-- Landing Page Content -->
     <div id="landing-page">
-        <img src="web_logo.png" alt="My Songs Logo" id="logo">
-        <h1>Welcome to My Songs!</h1>
-        <p>Click the button below to browse through the songs I've created.</p>
-        <button id="browse-btn" onclick="location.href='songs.html'">Browse Songs</button>
+      <img src="web_logo.png" alt="My Songs Logo" id="logo">
+      <h1>Welcome to My Songs!</h1>
+      <p>Click the button below to browse through the songs I've created.</p>
+      <button id="browse-btn" onclick="location.href='songs.html'">Browse Songs</button>
     </div>
+  </div>
 
-    <!-- Sidebar and Script Logic -->
-    <script>
-        // Load the sidebar into the #sidebar-container
-        fetch('sidebar.html')
-          .then(response => response.text())
-          .then(html => {
-            document.getElementById('sidebar-container').innerHTML = html;
+  <script>
+    // Load the sidebar into the #sidebar-container
+    fetch('sidebar.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('sidebar-container').innerHTML = html;
 
-            // Re-attach toggle functionality after loading
-            const menuToggle = document.getElementById("menu-toggle");
-            const sidebar = document.getElementById("sidebar");
-            menuToggle.addEventListener("click", () => {
-              sidebar.classList.toggle("open");
-            });
-          })
-          .catch(error => console.error('Error loading sidebar:', error));
-    </script>
+        // Re-attach toggle functionality after loading
+        const menuToggle = document.getElementById("menu-toggle");
+        const sidebar = document.getElementById("sidebar");
+        menuToggle.addEventListener("click", () => {
+          sidebar.classList.toggle("open");
+        });
+      });
 
-    <!-- Add Version Number -->
-    <script src="version.js"></script>
-    <script>
-      // Once the page loads, display the version number
-      window.onload = function() {
-          const versionDiv = document.createElement('div');
-          versionDiv.id = 'version';
-          versionDiv.textContent = 'Version ' + VERSION;
-          document.body.appendChild(versionDiv);
-      }
-    </script>
+    // Page Transition Animations
+    document.addEventListener("DOMContentLoaded", () => {
+      const links = document.querySelectorAll("a, button"); // Select all links and buttons
+
+      links.forEach(link => {
+        link.addEventListener("click", (e) => {
+          if (link.tagName === "A" || link.tagName === "BUTTON") {
+            e.preventDefault(); // Prevent default navigation
+
+            // Add fade-out class to main content
+            const mainContent = document.getElementById("main-content");
+            mainContent.classList.add("fade-out");
+
+            // Wait for the animation to finish (500ms)
+            setTimeout(() => {
+              const destination = link.tagName === "A" ? link.href : link.getAttribute("onclick").split("'")[1];
+              window.location.href = destination; // Navigate to the new page
+            }, 500);
+          }
+        });
+      });
+
+      // Apply fade-in animation when the page loads
+      const mainContent = document.getElementById("main-content");
+      mainContent.classList.add("fade-in");
+    });
+  </script>
+
+  <script src="version.js"></script>
+  <script>
+    // Once the page loads, display the version number
+    window.onload = function() {
+      const versionDiv = document.createElement('div');
+      versionDiv.id = 'version';
+      versionDiv.textContent = 'Version ' + VERSION;
+      document.body.appendChild(versionDiv);
+    };
+  </script>
 </body>
 </html>
