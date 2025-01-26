@@ -13,30 +13,64 @@
     <!-- Sidebar (Loaded from external file) -->
     <div id="sidebar-container"></div>
 
-    <script>
-        // Load the sidebar into the #sidebar-container
-        fetch('sidebar.html')
-        .then(response => response.text())
-        .then(html => {
-            document.getElementById('sidebar-container').innerHTML = html;
-
-            // Re-attach toggle functionality after loading
-            const menuToggle = document.getElementById("menu-toggle");
-            const sidebar = document.getElementById("sidebar");
-            menuToggle.addEventListener("click", () => {
-            sidebar.classList.toggle("open");
-            });
-        });
-    </script>
-
+<!-- Main Content -->
+<div id="main-content">
     <!-- About Page Content -->
     <div id="about-page">
         <h1>About My Songs</h1>
         <p>Welcome to the "About" page! Here you can learn more about me and my music.</p>
         <p>I like to make beats and stuff.</p>
     </div>
+</div>
 
-    <script src="script.js"></script>
-    <script src="version.js"></script>
+<script>
+    // Load the sidebar into the #sidebar-container
+    fetch('sidebar.html')
+    .then(response => response.text())
+    .then(html => {
+        document.getElementById('sidebar-container').innerHTML = html;
+
+        // Re-attach toggle functionality after loading
+        const menuToggle = document.getElementById("menu-toggle");
+        const sidebar = document.getElementById("sidebar");
+        menuToggle.addEventListener("click", () => {
+        sidebar.classList.toggle("open");
+        });
+        
+        // Attach page transition functionality to navigation links only
+        const navLinks = sidebar.querySelectorAll("a"); // Only select links inside the sidebar
+        navLinks.forEach(link => {
+          link.addEventListener("click", (e) => {
+            e.preventDefault(); // Prevent default navigation behavior
+
+            // Add fade-out class to main content
+            const mainContent = document.getElementById("main-content");
+            mainContent.classList.add("fade-out");
+
+            // Wait for the animation to complete before navigating
+            setTimeout(() => {
+              window.location.href = link.href; // Navigate to the target page
+            }, 500);
+          });
+        });
+      });
+
+    // Page Transition Animations
+    document.addEventListener("DOMContentLoaded", () => {
+      const mainContent = document.getElementById("main-content");
+      mainContent.classList.add("fade-in"); // Add fade-in animation when the page loads
+    });
+  </script>
+
+  <script src="version.js"></script>
+  <script>
+    // Once the page loads, display the version number
+    window.onload = function() {
+      const versionDiv = document.createElement('div');
+      versionDiv.id = 'version';
+      versionDiv.textContent = 'Version ' + VERSION;
+      document.body.appendChild(versionDiv);
+    };
+  </script>
 </body>
 </html>

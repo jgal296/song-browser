@@ -26,35 +26,31 @@
         menuToggle.addEventListener("click", () => {
           sidebar.classList.toggle("open");
         });
-      });
 
-      // Page Transition Animations
-      document.addEventListener("DOMContentLoaded", () => {
-      const links = document.querySelectorAll("a, button"); // Select all links and buttons
-
-      links.forEach(link => {
-        link.addEventListener("click", (e) => {
-          if (link.tagName === "A" || link.tagName === "BUTTON") {
+        // Attach page transition functionality to navigation links only
+        const navLinks = sidebar.querySelectorAll("a"); // Select links in the sidebar
+        navLinks.forEach(link => {
+          link.addEventListener("click", (e) => {
             e.preventDefault(); // Prevent default navigation
 
             // Add fade-out class to main content
             const mainContent = document.getElementById("main-content");
             mainContent.classList.add("fade-out");
 
-            // Wait for the animation to finish (500ms)
+            // Wait for animation before navigating
             setTimeout(() => {
-              const destination = link.tagName === "A" ? link.href : link.getAttribute("onclick").split("'")[1];
-              window.location.href = destination; // Navigate to the new page
+              window.location.href = link.href; // Navigate to the clicked link
             }, 500);
-          }
+          });
         });
       });
 
-      // Apply fade-in animation when the page loads
+    // Page Transition Animations
+    document.addEventListener("DOMContentLoaded", () => {
       const mainContent = document.getElementById("main-content");
-      mainContent.classList.add("fade-in");
-      });
-  </script>
+      mainContent.classList.add("fade-in"); // Fade in animation on load
+    });
+</script>
 
   <!-- Main Content -->
   <div id="main-content">
@@ -100,8 +96,6 @@
       </div>
       <!-- Song End -->
     </div>
-
-
     
     <script src="script.js"></script>
     <script src="version.js"></script>
