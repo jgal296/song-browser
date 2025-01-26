@@ -99,7 +99,15 @@
     
     <script src="script.js"></script>
     <script src="version.js"></script>
-
+    <script>
+      // Once the page loads, display the version number
+      window.onload = function() {
+        const versionDiv = document.createElement('div');
+        versionDiv.id = 'version';
+        versionDiv.textContent = 'Version ' + VERSION;
+        document.body.appendChild(versionDiv);
+      };
+    </script>
   </div>
 
 </body>
