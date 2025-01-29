@@ -28,87 +28,74 @@
         });
 
         // Attach page transition functionality to navigation links only
-        const navLinks = sidebar.querySelectorAll("a"); // Select links in the sidebar
+        const navLinks = sidebar.querySelectorAll("a");
         navLinks.forEach(link => {
           link.addEventListener("click", (e) => {
-            e.preventDefault(); // Prevent default navigation
-
-            // Add fade-out class to main content
+            e.preventDefault();
             const mainContent = document.getElementById("main-content");
             mainContent.classList.add("fade-out");
-
-            // Wait for animation before navigating
             setTimeout(() => {
-              window.location.href = link.href; // Navigate to the clicked link
+              window.location.href = link.href;
             }, 500);
           });
         });
       });
 
-    // Page Transition Animations
     document.addEventListener("DOMContentLoaded", () => {
-      const mainContent = document.getElementById("main-content");
-      mainContent.classList.add("fade-in"); // Fade in animation on load
+      document.getElementById("main-content").classList.add("fade-in");
     });
-</script>
+  </script>
 
   <!-- Main Content -->
   <div id="main-content">
-
-    <!-- Song Start -->
+    <h1>My Songs</h1>
     <div id="songs-container">
-      <div class="song">
+      <div class="song" data-src="songs/supportive.wav">
         <h2>Supportive</h2>
-        <audio controls>
-          <source src="songs/supportive.wav" type="audio/wav">
-          Your browser does not support the audio element.
-        </audio>
       </div>
-    <!-- Song End -->
-    <!-- Song Start -->
-    <div id="songs-container">
-      <div class="song">
+      <div class="song" data-src="songs/make_you_feel_my_love.wav">
         <h2>Make You Feel My Love (cover)</h2>
-        <audio controls>
-            <source src="songs/make_you_feel_my_love.wav" type="audio/wav">
-              Your browser does not support the audio element.
-        </audio>
       </div>
-      <!-- Song End -->
-    <!-- Song Start -->
-    <div id="songs-container">
-      <div class="song">
+      <div class="song" data-src="songs/journals.wav">
         <h2>Journals</h2>
-        <audio controls>
-            <source src="songs/journals.wav" type="audio/wav">
-              Your browser does not support the audio element.
-        </audio>
       </div>
-      <!-- Song End -->
-    <!-- Song Start -->
-    <div id="songs-container">
-      <div class="song">
+      <div class="song" data-src="songs/outliers.wav">
         <h2>Outliers</h2>
-        <audio controls>
-            <source src="songs/outliers.wav" type="audio/wav">
-              Your browser does not support the audio element.
-        </audio>
       </div>
-      <!-- Song End -->
     </div>
-    
-    <script src="script.js"></script>
-    <script src="version.js"></script>
-    <script>
-      // Once the page loads, display the version number
-      window.onload = function() {
-        const versionDiv = document.createElement('div');
-        versionDiv.id = 'version';
-        versionDiv.textContent = 'Version ' + VERSION;
-        document.body.appendChild(versionDiv);
-      };
-    </script>
   </div>
 
+  <!-- Fixed Audio Player at the Bottom -->
+  <div id="audio-player">
+    <p id="current-song-title">Select a song to play</p>
+    <audio id="player" controls>
+      <source id="audio-source" src="" type="audio/wav">
+      Your browser does not support the audio element.
+    </audio>
+  </div>
+
+  <script>
+    // Song selection and audio player handling
+    document.addEventListener("DOMContentLoaded", () => {
+      const songs = document.querySelectorAll(".song");
+      const audioPlayer = document.getElementById("player");
+      const audioSource = document.getElementById("audio-source");
+      const songTitle = document.getElementById("current-song-title");
+
+      songs.forEach(song => {
+        song.addEventListener("click", () => {
+          const songSrc = song.getAttribute("data-src");
+          const title = song.querySelector("h2").textContent;
+          
+          audioSource.src = songSrc;
+          audioPlayer.load();
+          audioPlayer.play();
+          songTitle.textContent = `Now Playing: ${title}`;
+        });
+      });
+    });
+  </script>
+
+  <script src="version.js"></script>
 </body>
 </html>
