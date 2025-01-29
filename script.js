@@ -35,17 +35,16 @@ document.addEventListener("DOMContentLoaded", () => {
 // Queue expansion
 document.addEventListener("DOMContentLoaded", () => {
   const queueContainer = document.getElementById("queue-container");
-  const queueList = document.getElementById("queue-list");
+  const queueContent = document.getElementById("queue-content");
+  const queueTitle = document.getElementById("queue-title");
 
   queueContainer.addEventListener("click", () => {
       queueContainer.classList.toggle("expanded");
 
       if (queueContainer.classList.contains("expanded")) {
-          // Add a delay before showing each queue item
-          const items = queueList.querySelectorAll("li");
-          items.forEach((item, index) => {
-              item.style.transitionDelay = `${index * 0.1}s`;
-          });
+          queueTitle.innerHTML = "Queue ▲"; // Change arrow direction
+      } else {
+          queueTitle.innerHTML = "Queue ▼";
       }
   });
 });
