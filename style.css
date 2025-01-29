@@ -328,16 +328,41 @@
     background: #2f755a;
   }
 
-  #queue-container {
+/* Queue Container */
+#queue-container {
     position: fixed;
     right: 10px;
     top: 50px;
-    background: rgba(0, 0, 0, 0.8);
-    color: white;
-    padding: 10px;
-    border-radius: 5px;
     width: 200px;
-  }
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 5px 15px;
+    max-height: 40px; /* Default collapsed */
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
+}
+
+/* Expanded Queue */
+#queue-container.expanded {
+    max-height: 300px; /* Adjust based on content */
+    padding: 15px;
+}
+
+/* Queue Content - Hidden Initially */
+#queue-content {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+/* Make Queue Content Visible When Expanded */
+#queue-container.expanded #queue-content {
+    max-height: 300px;
+    opacity: 1;
+}
 
   #queue-controls {
     display: flex;
@@ -360,16 +385,40 @@
     background: #0056b3;
   }
 
-  #queue-list {
+/* Queue List Items */
+#queue-list {
     list-style: none;
     padding: 0;
-  }
+    margin: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Show List Items with Staggered Animation */
+#queue-container.expanded #queue-list {
+    opacity: 1;
+}
 
   #queue-list li {
+    opacity: 0;
     padding: 5px;
     cursor: pointer;
-    transition: background 0.3s;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
   }
+
+/* Staggered Fade-in for Queue Items */
+#queue-container.expanded #queue-list li {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#queue-container.expanded #queue-list li:nth-child(1) { transition-delay: 0.1s; }
+#queue-container.expanded #queue-list li:nth-child(2) { transition-delay: 0.2s; }
+#queue-container.expanded #queue-list li:nth-child(3) { transition-delay: 0.3s; }
+#queue-container.expanded #queue-list li:nth-child(4) { transition-delay: 0.4s; }
+#queue-container.expanded #queue-list li:nth-child(5) { transition-delay: 0.5s; }
+
 
   #queue-list li:hover {
     background: rgba(255, 255, 255, 0.2);
