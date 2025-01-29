@@ -130,21 +130,6 @@
       z-index: 1000;
   }
   
-  .song {
-      margin-bottom: 20px; /* Adds space between audio containers */
-      padding: 10px; /* Optional: Adds padding inside the container */
-      background-color: rgba(255, 255, 255, 0.8); /* Optional: Adds a subtle background */
-      border-radius: 8px; /* Optional: Rounded corners */
-  }
-
-  .song h2 {
-    color: #000000; /* Change this to your preferred color */
-}
-  
-  #songs-page {
-      padding: 20px; /* Adds space around the entire page */
-  }
-  
   /* Hamburger Menu */
   #menu-toggle {
       display: block;
@@ -226,6 +211,14 @@
     animation: fadeOut 0.5s ease forwards;
   }
 
+  .song h2 {
+  color: #000000; /* Change this to your preferred color */
+  }
+
+  #songs-page {
+    padding: 20px; /* Adds space around the entire page */
+  }
+
   #songs-container {
     display: flex;
     flex-direction: column;
@@ -234,29 +227,18 @@
     margin: 0 auto;
     text-align: left;
     gap: 15px;
+    background-color: rgba(255, 255, 255, 0.8)
   }
   
   .song:hover {
     background: #666;
   }
-  
-  #audio-player {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: #222;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
-  }
-  
-  #audio-player audio {
-    width: 100%;
-  }
 
   .song {
+    margin-bottom: 20px; /* Adds space between audio containers */
+    padding: 10px; /* Optional: Adds padding inside the container */
+    background-color: rgba(255, 255, 255, 0.8); /* Optional: Adds a subtle background */
+    border-radius: 8px; /* Optional: Rounded corners */
     background: #444;
     color: white;
     padding: 15px;
