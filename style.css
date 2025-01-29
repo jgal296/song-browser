@@ -349,7 +349,7 @@
     justify-content: space-between; /* Distribute space between elements */
     align-items: center; /* Vertically center the items */
     font-size: 1.2rem;
-    color: white;
+    color: rgb(0, 0, 0);
     padding: 10px;
     cursor: pointer;
 }
