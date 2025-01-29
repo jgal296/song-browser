@@ -69,12 +69,6 @@
     </div>
   </div>
 
-  <!-- Queue Controls -->
-  <div id="queue-controls">
-    <button id="loop-btn" onclick="toggleLoop()">🔁 Loop: Off</button>
-    <button id="shuffle-btn" onclick="toggleShuffle()">🔀 Shuffle: Off</button>
-  </div>
-
   <!-- Queue Display -->
   <div id="queue-container">
     <h3>Queue</h3>
@@ -89,6 +83,8 @@
       Your browser does not support the audio element.
     </audio>
     <button id="skip-btn" onclick="skipSong()">⏭️ Skip</button>
+    <button id="loop-btn" onclick="toggleLoop()">🔁 Loop: Off</button>
+    <button id="shuffle-btn" onclick="toggleShuffle()">🔀 Shuffle: Off</button>
   </div>
 
   <script>
@@ -184,5 +180,15 @@
   </script>
 
   <script src="version.js"></script>
+  <script>
+      // Once the page loads, display the version number
+      window.onload = function() {
+          const versionDiv = document.createElement('div');
+          versionDiv.id = 'version';
+          versionDiv.textContent = 'Version ' + VERSION;
+          document.body.appendChild(versionDiv);
+      };
+  </script>
+
 </body>
 </html>
