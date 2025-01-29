@@ -270,6 +270,16 @@
   }
   
   .song:hover {
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  .song-time {
+    font-size: 0.8rem;
+    color: gray;
+    margin-left: 10px;
+  }
+
+  .song:hover {
     background: #666;
   }
   
@@ -287,7 +297,7 @@
   }
   
   .download-btn {
-    background: #4CAF50;
+    background: #42a57f;
     color: white;
     border: none;
     padding: 8px 12px;
@@ -299,23 +309,7 @@
   }
   
   .download-btn:hover {
-    background: #45a049;
-  }
-  
-  #audio-player {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: #222;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
-  }
-  
-  #audio-player audio {
-    width: 100%;
+    background: #2f755a;
   }
 
   #queue-container {
@@ -327,60 +321,6 @@
     padding: 10px;
     border-radius: 5px;
     width: 200px;
-}
-
-#queue-list {
-    list-style: none;
-    padding: 0;
-}
-
-#queue-list li {
-    padding: 5px;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-#queue-list li:hover {
-    background: rgba(255, 255, 255, 0.2);
-}
-
-.song:hover {
-    background: rgba(0, 0, 0, 0.1);
-}
-
-.song-time {
-    font-size: 0.8rem;
-    color: gray;
-    margin-left: 10px;
-}
-
-.download-btn {
-    background: #4CAF50;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.download-btn:hover {
-    background: #45a049;
-}
-
-#audio-player {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: #222;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
-}
-
-#audio-player audio {
-    width: 80%;
 }
 
 #queue-controls {
@@ -402,4 +342,35 @@
 
 #queue-controls button:hover {
     background: #0056b3;
+}
+
+#queue-list {
+    list-style: none;
+    padding: 0;
+}
+
+#queue-list li {
+    padding: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#queue-list li:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+#audio-player {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #222;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+}
+
+#audio-player audio {
+    width: 80%;
 }
