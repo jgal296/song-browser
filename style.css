@@ -242,6 +242,12 @@
     scrollbar-width: thin;
     scrollbar-color: #888 #f1f1f1;
   }
+
+  @media (max-width: 768px) {
+    #songs-container {
+        margin-top: 10px;
+    }
+  }
   
   /* Scrollbar for Webkit Browsers (Chrome, Edge, Safari) */
   #songs-container::-webkit-scrollbar {
