@@ -133,9 +133,13 @@
   .song {
       margin-bottom: 20px; /* Adds space between audio containers */
       padding: 10px; /* Optional: Adds padding inside the container */
-      background-color: rgba(0, 0, 0, 0.05); /* Optional: Adds a subtle background */
+      background-color: rgba(150, 150, 150, 0.144); /* Optional: Adds a subtle background */
       border-radius: 8px; /* Optional: Rounded corners */
   }
+
+  .song h2 {
+    color: #000000; /* Change this to your preferred color */
+}
   
   #songs-page {
       padding: 20px; /* Adds space around the entire page */
@@ -350,7 +354,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: rgba(0, 0, 0, 0.05);
+    background: rgba(155, 152, 152, 0.05);
     padding: 10px;
     margin: 5px 0;
     border-radius: 5px;
@@ -396,4 +400,24 @@
 #audio-player audio {
     width: 80%;
 }
-  
+
+#queue-controls {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+#queue-controls button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#queue-controls button:hover {
+    background: #0056b3;
+}

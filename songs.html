@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
   <!-- Hamburger Menu -->
   <button id="menu-toggle" aria-label="Toggle menu">&#9776;</button>
 
@@ -14,20 +15,19 @@
   <div id="sidebar-container"></div>
 
   <script>
-    // Load the sidebar into the #sidebar-container
     fetch('sidebar.html')
       .then(response => response.text())
       .then(html => {
         document.getElementById('sidebar-container').innerHTML = html;
 
-        // Re-attach toggle functionality after loading
+        // Sidebar Toggle
         const menuToggle = document.getElementById("menu-toggle");
         const sidebar = document.getElementById("sidebar");
         menuToggle.addEventListener("click", () => {
           sidebar.classList.toggle("open");
         });
 
-        // Attach page transition functionality to navigation links only
+        // Page Transitions
         const navLinks = sidebar.querySelectorAll("a");
         navLinks.forEach(link => {
           link.addEventListener("click", (e) => {
@@ -50,63 +50,136 @@
   <div id="main-content">
     <h1>My Songs</h1>
     <div id="songs-container">
-      <div class="song" data-src="songs/supportive.wav">
+      <div class="song" onclick="addToQueue('songs/supportive.wav', 'Supportive')" data-src="songs/supportive.wav">
         <h2>Supportive <span class="song-time">(3:25)</span></h2>
-        <button class="download-btn" onclick="downloadSong('songs/supportive.wav')">⬇</button>
+        <button class="download-btn" onclick="event.stopPropagation(); downloadSong('songs/supportive.wav')">⬇</button>
       </div>
-      <div class="song" data-src="songs/make_you_feel_my_love.wav">
+      <div class="song" onclick="addToQueue('songs/make_you_feel_my_love.wav', 'Make You Feel My Love')" data-src="songs/make_you_feel_my_love.wav">
         <h2>Make You Feel My Love <span class="song-time">(4:10)</span></h2>
-        <button class="download-btn" onclick="downloadSong('songs/make_you_feel_my_love.wav')">⬇</button>
+        <button class="download-btn" onclick="event.stopPropagation(); downloadSong('songs/make_you_feel_my_love.wav')">⬇</button>
       </div>
-      <div class="song" data-src="songs/journals.wav">
+      <div class="song" onclick="addToQueue('songs/journals.wav', 'Journals')" data-src="songs/journals.wav">
         <h2>Journals <span class="song-time">(2:47)</span></h2>
-        <button class="download-btn" onclick="downloadSong('songs/journals.wav')">⬇</button>
+        <button class="download-btn" onclick="event.stopPropagation(); downloadSong('songs/journals.wav')">⬇</button>
       </div>
-      <div class="song" data-src="songs/outliers.wav">
+      <div class="song" onclick="addToQueue('songs/outliers.wav', 'Outliers')" data-src="songs/outliers.wav">
         <h2>Outliers <span class="song-time">(3:58)</span></h2>
-        <button class="download-btn" onclick="downloadSong('songs/outliers.wav')">⬇</button>
+        <button class="download-btn" onclick="event.stopPropagation(); downloadSong('songs/outliers.wav')">⬇</button>
       </div>
     </div>
   </div>
 
-  <!-- Fixed Audio Player at the Bottom -->
+  <!-- Queue Controls -->
+  <div id="queue-controls">
+    <button id="loop-btn" onclick="toggleLoop()">🔁 Loop: Off</button>
+    <button id="shuffle-btn" onclick="toggleShuffle()">🔀 Shuffle: Off</button>
+  </div>
+
+  <!-- Queue Display -->
+  <div id="queue-container">
+    <h3>Queue</h3>
+    <ul id="queue-list"></ul>
+  </div>
+
+  <!-- Fixed Audio Player -->
   <div id="audio-player">
     <p id="current-song-title">Select a song to play</p>
     <audio id="player" controls>
       <source id="audio-source" src="" type="audio/wav">
       Your browser does not support the audio element.
     </audio>
+    <button id="skip-btn" onclick="skipSong()">⏭️ Skip</button>
   </div>
 
   <script>
-    // Song selection and audio player handling
-    document.addEventListener("DOMContentLoaded", () => {
-      const songs = document.querySelectorAll(".song");
-      const audioPlayer = document.getElementById("player");
-      const audioSource = document.getElementById("audio-source");
-      const songTitle = document.getElementById("current-song-title");
+    let queue = [];
+    let currentSongIndex = -1;
+    let loopMode = false;
+    let shuffleMode = false;
 
-      songs.forEach(song => {
-        song.addEventListener("click", () => {
-          const songSrc = song.getAttribute("data-src");
-          const title = song.querySelector("h2").textContent;
-          
-          audioSource.src = songSrc;
-          audioPlayer.load();
-          audioPlayer.play();
-          songTitle.textContent = `Now Playing: ${title}`;
+    const audioPlayer = document.getElementById("player");
+    const audioSource = document.getElementById("audio-source");
+    const currentSongTitle = document.getElementById("current-song-title");
+    const queueList = document.getElementById("queue-list");
+    const loopBtn = document.getElementById("loop-btn");
+    const shuffleBtn = document.getElementById("shuffle-btn");
+
+    function addToQueue(songPath, songTitle) {
+        queue.push({ path: songPath, title: songTitle });
+        updateQueueDisplay();
+        if (queue.length === 1) {
+            playNextSong();
+        }
+    }
+
+    function updateQueueDisplay() {
+        queueList.innerHTML = "";
+        queue.forEach((song, index) => {
+            let li = document.createElement("li");
+            li.textContent = song.title;
+            li.onclick = () => playSongAtIndex(index);
+            queueList.appendChild(li);
         });
-      });
+    }
+
+    function playNextSong() {
+        if (queue.length === 0) return;
+        currentSongIndex = shuffleMode ? Math.floor(Math.random() * queue.length) : 0;
+        playSongAtIndex(currentSongIndex);
+    }
+
+    function playSongAtIndex(index) {
+        if (index >= queue.length) return;
+        currentSongIndex = index;
+        audioSource.src = queue[index].path;
+        currentSongTitle.textContent = queue[index].title;
+        audioPlayer.load();
+        audioPlayer.play();
+    }
+
+    function skipSong() {
+        if (loopMode) {
+            playSongAtIndex(currentSongIndex);
+        } else if (shuffleMode) {
+            currentSongIndex = Math.floor(Math.random() * queue.length);
+            playSongAtIndex(currentSongIndex);
+        } else if (currentSongIndex + 1 < queue.length) {
+            playSongAtIndex(currentSongIndex + 1);
+        } else {
+            queue = [];
+            currentSongIndex = -1;
+            updateQueueDisplay();
+            currentSongTitle.textContent = "Select a song to play";
+            audioSource.src = "";
+            audioPlayer.pause();
+        }
+    }
+
+    audioPlayer.addEventListener("ended", () => {
+        if (loopMode) {
+            playSongAtIndex(currentSongIndex);
+        } else {
+            skipSong();
+        }
     });
 
-    // Function to download song
-    function downloadSong(songUrl) {
-      const link = document.createElement('a');
-      link.href = songUrl;
-      link.download = songUrl.split('/').pop(); // Extract filename
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+    function toggleLoop() {
+        loopMode = !loopMode;
+        loopBtn.textContent = loopMode ? "🔁 Loop: On" : "🔁 Loop: Off";
+    }
+
+    function toggleShuffle() {
+        shuffleMode = !shuffleMode;
+        shuffleBtn.textContent = shuffleMode ? "🔀 Shuffle: On" : "🔀 Shuffle: Off";
+    }
+
+    function downloadSong(songPath) {
+        const a = document.createElement("a");
+        a.href = songPath;
+        a.download = songPath.split('/').pop();
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
     }
   </script>
 
