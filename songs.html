@@ -51,16 +51,20 @@
     <h1>My Songs</h1>
     <div id="songs-container">
       <div class="song" data-src="songs/supportive.wav">
-        <h2>Supportive</h2>
+        <h2>Supportive <span class="song-time">(3:25)</span></h2>
+        <button class="download-btn" onclick="downloadSong('songs/supportive.wav')">⬇</button>
       </div>
       <div class="song" data-src="songs/make_you_feel_my_love.wav">
-        <h2>Make You Feel My Love (cover)</h2>
+        <h2>Make You Feel My Love <span class="song-time">(4:10)</span></h2>
+        <button class="download-btn" onclick="downloadSong('songs/make_you_feel_my_love.wav')">⬇</button>
       </div>
       <div class="song" data-src="songs/journals.wav">
-        <h2>Journals</h2>
+        <h2>Journals <span class="song-time">(2:47)</span></h2>
+        <button class="download-btn" onclick="downloadSong('songs/journals.wav')">⬇</button>
       </div>
       <div class="song" data-src="songs/outliers.wav">
-        <h2>Outliers</h2>
+        <h2>Outliers <span class="song-time">(3:58)</span></h2>
+        <button class="download-btn" onclick="downloadSong('songs/outliers.wav')">⬇</button>
       </div>
     </div>
   </div>
@@ -94,6 +98,16 @@
         });
       });
     });
+
+    // Function to download song
+    function downloadSong(songUrl) {
+      const link = document.createElement('a');
+      link.href = songUrl;
+      link.download = songUrl.split('/').pop(); // Extract filename
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
   </script>
 
   <script src="version.js"></script>
