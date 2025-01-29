@@ -3,227 +3,95 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
-  
-  /* Sidebar Navigation */
-  #sidebar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 200px;
-      height: 100%;
-      background-color: #333;
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      padding-top: 70px; /* Add space below the hamburger */
-      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-      transform: translateX(-100%); /* Default: Hidden off-screen */
-      transition: transform 0.3s ease; /* Smooth sliding */
-      z-index: 999; /* Ensure it's above main content */
-  }
-  
-  /* Sidebar Visible (When open) */
-  #sidebar.open {
-      transform: translateX(0); /* Slide in from the left */
-  }
-  
-  #sidebar ul {
-      list-style: none; /* Remove bullets */
-      padding: 0;
-      margin: 0;
-  }
-  
-  #sidebar ul li {
-      margin: 10px 0; /* Add space between buttons */
-  }
-  
-  #sidebar ul li a {
-      color: #fff; /* Button text color */
-      text-decoration: none; /* Remove underline */
-      padding: 10px 15px; /* Button padding */
-      display: block; /* Make the links fill the container */
-      border-radius: 5px; /* Optional: Rounded edges */
-      transition: background-color 0.3s ease; /* Smooth hover effect */
-  }
-  
-  #sidebar ul li a:hover {
-      background-color: #575757; /* Darker color on hover */
-  }
-  
-  html, body {
-      height: 100%; /* Ensure full height of the viewport */
-      margin: 0; /* Remove any default margin */
-      overflow: hidden; /* Prevent scrolling */
-  }
-  
-  body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-image: url('background.png');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      height: 100vh;
-      margin: 0;
-  }
-  
-  #landing-page {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      background-color: rgba(255, 255, 255, 0.8);
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      max-width: 90%;
-      width: 320px;
-  }
-  
-  #logo {
-      width: 200px;
-      height: auto;
-      margin-bottom: 20px;
-  }
-  
-  h1 {
-      font-size: 1.5rem;
-      margin-bottom: 10px;
-  }
-  
-  p {
-      font-size: 1rem;
-      margin-bottom: 20px;
-  }
-  
-  button {
-      background-color: #4CAF50;
-      color: white;
-      padding: 12px 20px;
-      border: none;
-      border-radius: 5px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background-color 0.3s;
-  }
-  
-  button:hover {
-      background-color: #45a049;
-  }
-  
-  button:active {
-      background-color: #3e8e41;
-  }
-  
-  #version {
-      position: fixed;
-      top: 10px;
-      right: 10px;
-      background-color: rgba(0, 0, 0, 0.5);
-      color: white;
-      padding: 5px 10px;
-      font-size: 12px;
-      border-radius: 5px;
-      z-index: 1000;
-  }
-  
-  /* Hamburger Menu */
-  #menu-toggle {
-      display: block;
-      position: fixed;
-      top: 10px;
-      left: 10px;
-      background-color: #333;
-      color: #fff;
-      border: none;
-      font-size: 24px;
-      padding: 10px;
-      border-radius: 5px;
-      cursor: pointer;
-      z-index: 1001; /* Ensure it's above sidebar */
-  }
-  
-  /* Media Query for Mobile */
-  @media (max-width: 768px) {
-      #sidebar {
-          width: 200px;
-          transform: translateX(-100%); /* Hidden by default */
-      }
-  
-      #menu-toggle {
-          display: block; /* Show hamburger menu */
-      }
-  
-      #sidebar.open {
-          transform: translateX(0); /* Slide in when toggled */
-      }
-  
-      #sidebar ul {
-          padding-top: 30px; /* Add space for mobile menu items */
-      }
-  }
-  
-  #about-page {
-      padding: 20px;
-      background-color: rgba(255, 255, 255, 0.9); /* Slight transparency */
-      max-width: 800px;
-      margin: 0 auto; /* Center the content */
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      border-radius: 8px;
-  }
+}
 
-  #about-page h1 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-  }
+/* Ensure Full Page Coverage */
+html, body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden; /* Prevents unwanted page scrolling */
+}
 
-  #about-page p {
-      font-size: 1.2rem;
-      line-height: 1.6;
-  }
+/* Queue Container */
+#queue-container {
+    position: fixed;
+    right: 10px;
+    top: 50px;
+    width: 200px;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 5px 15px;
+    max-height: 40px; /* Default collapsed */
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
+}
 
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-  
-  @keyframes fadeOut {
-    from {
-      opacity: 1;
-    }
-    to {
-      opacity: 0;
-    }
-  }
-  
-  .fade-in {
-    animation: fadeIn 0.5s ease forwards;
-  }
-  
-  .fade-out {
-    animation: fadeOut 0.5s ease forwards;
-  }
+/* Expanded Queue */
+#queue-container.expanded {
+    max-height: 300px; /* Adjust based on content */
+    padding: 15px;
+}
 
-  .song h2 {
-  color: #000000; /* Change this to your preferred color */
-  }
+/* Queue Content - Hidden Initially */
+#queue-content {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out;
+}
 
-  #songs-page {
-    padding: 20px; /* Adds space around the entire page */
-  }
+/* Make Queue Content Visible When Expanded */
+#queue-container.expanded #queue-content {
+    max-height: 300px;
+    opacity: 1;
+}
 
-  #songs-container {
+/* Queue List Items */
+#queue-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Show List Items with Staggered Animation */
+#queue-container.expanded #queue-list {
+    opacity: 1;
+}
+
+#queue-list li {
+    opacity: 0;
+    padding: 5px;
+    cursor: pointer;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
+/* Staggered Fade-in for Queue Items */
+#queue-container.expanded #queue-list li {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#queue-container.expanded #queue-list li:nth-child(1) { transition-delay: 0.1s; }
+#queue-container.expanded #queue-list li:nth-child(2) { transition-delay: 0.2s; }
+#queue-container.expanded #queue-list li:nth-child(3) { transition-delay: 0.3s; }
+#queue-container.expanded #queue-list li:nth-child(4) { transition-delay: 0.4s; }
+#queue-container.expanded #queue-list li:nth-child(5) { transition-delay: 0.5s; }
+
+#queue-list li:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Songs Container */
+#songs-container {
     display: flex;
     flex-direction: column;
-    align-items: left;
-    justify-content: left;
+    align-items: flex-start;
+    justify-content: flex-start;
     margin: 0 auto;
     text-align: left;
     gap: 15px;
@@ -233,86 +101,69 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     max-width: 90%;
     width: 320px;
-
-    /* Enable scrolling */
-    max-height: 400px;
-    overflow-y: auto;
-
-    /* Smooth scrolling */
-    scrollbar-width: thin;
+    max-height: 400px; /* Limit height for scroll */
+    overflow-y: auto; /* Enable scrolling */
+    scrollbar-width: thin; /* Firefox Scrollbar */
     scrollbar-color: #888 #f1f1f1;
-  }
-  
-  /* Scrollbar for Webkit Browsers (Chrome, Edge, Safari) */
-  #songs-container::-webkit-scrollbar {
-    width: 8px; /* Adjust width */
-  }
+}
 
-  #songs-container::-webkit-scrollbar-track {
-    background: #f1f1f1; /* Light gray background */
+/* Scrollbar for WebKit Browsers */
+#songs-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+#songs-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
     border-radius: 10px;
-  }
+}
 
-  #songs-container::-webkit-scrollbar-thumb {
-    background: #888; /* Darker gray scrollbar */
+#songs-container::-webkit-scrollbar-thumb {
+    background: #888;
     border-radius: 10px;
     transition: background 0.3s ease;
-  }
+}
 
-  #songs-container::-webkit-scrollbar-thumb:hover {
-    background: #555; /* Slightly darker on hover */
-  }
+#songs-container::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
 
-  .song:hover {
-    background: #666;
-  }
-
-  .song {
-    margin-bottom: 20px; /* Adds space between audio containers */
-    padding: 10px; /* Optional: Adds padding inside the container */
-    background-color: rgba(255, 255, 255, 0.8); /* Optional: Adds a subtle background */
-    border-radius: 8px; /* Optional: Rounded corners */
+/* Song Items */
+.song {
+    margin-bottom: 20px;
+    padding: 15px;
     background: #444;
     color: white;
-    padding: 15px;
     border-radius: 8px;
     cursor: pointer;
     text-align: center;
     transition: background 0.3s ease;
     display: flex;
     justify-content: space-between;
-    align-items: left;
-  }
-  
-  .song:hover {
-    background: rgba(0, 0, 0, 0.1);
-  }
+    align-items: center;
+}
 
-  .song-time {
-    font-size: 0.8rem;
-    color: gray;
-    margin-left: 10px;
-  }
-
-  .song:hover {
+.song:hover {
     background: #666;
-  }
-  
-  .song h2 {
+}
+
+/* Song Title */
+.song h2 {
     font-size: 18px;
     margin: 0;
     flex-grow: 1;
     text-align: left;
     color: white;
-  }
-  
-  .song-time {
+}
+
+/* Song Time */
+.song-time {
     font-size: 14px;
     color: #ccc;
     margin-left: 10px;
-  }
-  
-  .download-btn {
+}
+
+/* Download Button */
+.download-btn {
     background: #42a57f;
     color: white;
     border: none;
@@ -322,60 +173,14 @@
     font-size: 18px;
     margin-left: 10px;
     transition: background 0.3s ease;
-  }
-  
-  .download-btn:hover {
+}
+
+.download-btn:hover {
     background: #2f755a;
-  }
+}
 
-  #queue-container {
-    position: fixed;
-    right: 10px;
-    top: 50px;
-    background: rgba(0, 0, 0, 0.8);
-    color: white;
-    padding: 10px;
-    border-radius: 5px;
-    width: 200px;
-  }
-
-  #queue-controls {
-    display: flex;
-    justify-content: center;
-    margin: 10px 0;
-  }
-
-  #queue-controls button {
-    background: #007bff;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    margin: 5px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s;
-  }
-
-  #queue-controls button:hover {
-    background: #0056b3;
-  }
-
-  #queue-list {
-    list-style: none;
-    padding: 0;
-  }
-
-  #queue-list li {
-    padding: 5px;
-    cursor: pointer;
-    transition: background 0.3s;
-  }
-
-  #queue-list li:hover {
-    background: rgba(255, 255, 255, 0.2);
-  }
-
-  #audio-player {
+/* Audio Player */
+#audio-player {
     position: fixed;
     bottom: 0;
     left: 0;
@@ -385,8 +190,8 @@
     text-align: center;
     padding: 10px;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
-  }
+}
 
-  #audio-player audio {
+#audio-player audio {
     width: 80%;
-  }
+}
