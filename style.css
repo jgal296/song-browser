@@ -166,26 +166,26 @@
       }
   }
   
-#about-page {
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.9); /* Slight transparency */
-    max-width: 800px;
-    margin: 0 auto; /* Center the content */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-}
+  #about-page {
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.9); /* Slight transparency */
+      max-width: 800px;
+      margin: 0 auto; /* Center the content */
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+  }
 
-#about-page h1 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-}
+  #about-page h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+  }
 
-#about-page p {
-    font-size: 1.2rem;
-    line-height: 1.6;
-}
+  #about-page p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+  }
 
-@keyframes fadeIn {
+  @keyframes fadeIn {
     from {
       opacity: 0;
     }
@@ -227,7 +227,12 @@
     margin: 0 auto;
     text-align: left;
     gap: 15px;
-    background-color: rgba(255, 255, 255, 0.8)
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 90%;
+    width: 320px;
   }
   
   .song:hover {
@@ -304,15 +309,15 @@
     padding: 10px;
     border-radius: 5px;
     width: 200px;
-}
+  }
 
-#queue-controls {
+  #queue-controls {
     display: flex;
     justify-content: center;
     margin: 10px 0;
-}
+  }
 
-#queue-controls button {
+  #queue-controls button {
     background: #007bff;
     color: white;
     border: none;
@@ -321,28 +326,28 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background 0.3s;
-}
+  }
 
-#queue-controls button:hover {
+  #queue-controls button:hover {
     background: #0056b3;
-}
+  }
 
-#queue-list {
+  #queue-list {
     list-style: none;
     padding: 0;
-}
+  }
 
-#queue-list li {
+  #queue-list li {
     padding: 5px;
     cursor: pointer;
     transition: background 0.3s;
-}
+  }
 
-#queue-list li:hover {
+  #queue-list li:hover {
     background: rgba(255, 255, 255, 0.2);
-}
+  }
 
-#audio-player {
+  #audio-player {
     position: fixed;
     bottom: 0;
     left: 0;
@@ -352,8 +357,8 @@
     text-align: center;
     padding: 10px;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
-}
+  }
 
-#audio-player audio {
+  #audio-player audio {
     width: 80%;
-}
+  }
