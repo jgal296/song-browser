@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 from mutagen.wave import WAVE
 
 SONGS_DIR = "songs"
@@ -21,7 +22,7 @@ def generate_song_html():
     
     for filename in sorted(os.listdir(SONGS_DIR)):  # Sort for consistent order
         if filename.endswith(".wav"):
-            file_path = os.path.join(SONGS_DIR, filename)
+            file_path = Path(SONGS_DIR, filename).as_posix()  # Ensure forward slashes
             song_name = os.path.splitext(filename)[0].replace("_", " ").title()
             duration = get_song_duration(file_path)
             
