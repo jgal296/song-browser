@@ -50,3 +50,21 @@ document.addEventListener("DOMContentLoaded", function () {
       }
   });
 });
+
+// Play All function
+document.getElementById("play-all-btn").addEventListener("click", function() {
+  // Clear the current queue before adding all songs
+  queue = [];
+  updateQueueDisplay();
+
+  // Get all song paths from the song elements and add them to the queue
+  const songs = document.querySelectorAll(".song");
+  songs.forEach(song => {
+      const songPath = song.getAttribute("data-src");
+      const songTitle = song.querySelector("h2").innerText.split(" ")[0];  // Get song name from h2
+      addToQueue(songPath, songTitle);  // Add to the queue
+  });
+
+  // Start playing the first song
+  playNextSong();
+});
