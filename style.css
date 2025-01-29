@@ -334,7 +334,7 @@
     right: 10px;
     top: 50px;
     width: 200px;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.8);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
     cursor: pointer;
@@ -342,6 +342,16 @@
     max-height: 40px; /* Default collapsed */
     overflow: hidden;
     transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
+}
+
+#queue-header {
+    display: flex;
+    justify-content: space-between; /* Distribute space between elements */
+    align-items: center; /* Vertically center the items */
+    font-size: 1.2rem;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
 }
 
 /* Expanded Queue */
