@@ -458,3 +458,49 @@
   #audio-player audio {
     width: 80%;
   }
+
+  .add-to-queue-btn {
+    background-color: #4CAF50; /* Green background */
+    border: none;
+    color: white;
+    font-size: 16px;
+    padding: 8px 12px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    line-height: 24px;
+    display: inline-block;
+  }
+  
+  .add-to-queue-btn:hover {
+    background-color: #45a049; /* Darker green on hover */
+  }
+  
+  .add-to-queue-btn:focus {
+    outline: 2px solid #4CAF50;
+    outline-offset: 2px;
+  }
+
+  #play-all-btn {
+    background-color: #4CAF50; /* Green background */
+    border: none;
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 20px; /* Add margin at the top to prevent it from being cut off */
+    position: relative; /* Ensure it doesn’t overlap with other elements */
+  }
+  
+  #play-all-btn:hover {
+    background-color: #45a049; /* Darker green on hover */
+  }
+  
+  #play-all-btn:focus {
+    outline: 2px solid #4CAF50;
+    outline-offset: 2px;
+  }

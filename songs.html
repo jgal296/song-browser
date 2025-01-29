@@ -55,48 +55,56 @@
             <div class="song" onclick="addToQueue('songs/galaxy_wars.wav', 'Galaxy Wars')" data-src="songs\galaxy_wars.wav">
               <h2>Galaxy Wars <span class="song-time">(0:46)</span></h2>
               <button class="download-btn" onclick="event.stopPropagation(); downloadSong('songs\galaxy_wars.wav')">⬇</button>
+              <button class="add-to-queue-btn" onclick="event.stopPropagation(); addToQueue('{file_path}', '{song_name}')">+</button>
             </div>
             
 
             <div class="song" onclick="addToQueue('songs/blackstreet_cover.wav', 'Blackstreet Cover')" data-src="songs/blackstreet_cover.wav">
               <h2>Blackstreet Cover <span class="song-time">(0:45)</span></h2>
               <button class="download-btn" onclick="event.stopPropagation(); downloadSong('songs/blackstreet_cover.wav')">⬇</button>
+              <button class="add-to-queue-btn" onclick="event.stopPropagation(); addToQueue('{file_path}', '{song_name}')">+</button>
             </div>
             
 
             <div class="song" onclick="addToQueue('songs/discovery.wav', 'Discovery')" data-src="songs/discovery.wav">
               <h2>Discovery <span class="song-time">(0:41)</span></h2>
               <button class="download-btn" onclick="event.stopPropagation(); downloadSong('songs/discovery.wav')">⬇</button>
+              <button class="add-to-queue-btn" onclick="event.stopPropagation(); addToQueue('{file_path}', '{song_name}')">+</button>
             </div>
             
 
             <div class="song" onclick="addToQueue('songs/journals.wav', 'Journals')" data-src="songs/journals.wav">
               <h2>Journals <span class="song-time">(0:39)</span></h2>
               <button class="download-btn" onclick="event.stopPropagation(); downloadSong('songs/journals.wav')">⬇</button>
+              <button class="add-to-queue-btn" onclick="event.stopPropagation(); addToQueue('{file_path}', '{song_name}')">+</button>
             </div>
             
 
             <div class="song" onclick="addToQueue('songs/make_you_feel_my_love_cover.wav', 'Make You Feel My Love Cover')" data-src="songs/make_you_feel_my_love_cover.wav">
               <h2>Make You Feel My Love Cover <span class="song-time">(1:06)</span></h2>
               <button class="download-btn" onclick="event.stopPropagation(); downloadSong('songs/make_you_feel_my_love_cover.wav')">⬇</button>
+              <button class="add-to-queue-btn" onclick="event.stopPropagation(); addToQueue('{file_path}', '{song_name}')">+</button>
             </div>
             
 
             <div class="song" onclick="addToQueue('songs/outliers.wav', 'Outliers')" data-src="songs/outliers.wav">
               <h2>Outliers <span class="song-time">(0:24)</span></h2>
               <button class="download-btn" onclick="event.stopPropagation(); downloadSong('songs/outliers.wav')">⬇</button>
+              <button class="add-to-queue-btn" onclick="event.stopPropagation(); addToQueue('{file_path}', '{song_name}')">+</button>
             </div>
             
 
             <div class="song" onclick="addToQueue('songs/spine_guidance.wav', 'Spine Guidance')" data-src="songs/spine_guidance.wav">
               <h2>Spine Guidance <span class="song-time">(1:46)</span></h2>
               <button class="download-btn" onclick="event.stopPropagation(); downloadSong('songs/spine_guidance.wav')">⬇</button>
+              <button class="add-to-queue-btn" onclick="event.stopPropagation(); addToQueue('{file_path}', '{song_name}')">+</button>
             </div>
             
 
             <div class="song" onclick="addToQueue('songs/supportive.wav', 'Supportive')" data-src="songs/supportive.wav">
               <h2>Supportive <span class="song-time">(0:24)</span></h2>
               <button class="download-btn" onclick="event.stopPropagation(); downloadSong('songs/supportive.wav')">⬇</button>
+              <button class="add-to-queue-btn" onclick="event.stopPropagation(); addToQueue('{file_path}', '{song_name}')">+</button>
             </div>
             
       </div>
@@ -139,13 +147,29 @@
     const shuffleBtn = document.getElementById("shuffle-btn");
 
     function addToQueue(songPath, songTitle) {
-        queue.push({ path: songPath, title: songTitle });
-        updateQueueDisplay();
-        if (queue.length === 1) {
-            playNextSong();
-        }
+    // Avoid duplicates in the queue
+      if (!queue.some(song => song.path === songPath)) {
+          queue.push({ path: songPath, title: songTitle });
+          updateQueueDisplay();
+      }
     }
 
+    function moveToTopOfQueue(songPath, songTitle) {
+    // Move the song to the top of the queue
+      const songIndex = queue.findIndex(song => song.path === songPath);
+      if (songIndex !== -1) {
+          // Remove the song and add it to the top
+          const song = queue.splice(songIndex, 1)[0];
+          queue.unshift(song);
+      } else {
+          // If not in the queue, add it to the top
+          addToQueue(songPath, songTitle);
+      }
+      
+      updateQueueDisplay();
+      playNextSong(); // Start playing immediately
+    }
+    
     function updateQueueDisplay() {
         queueList.innerHTML = "";
         queue.forEach((song, index) => {
