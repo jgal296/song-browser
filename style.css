@@ -487,7 +487,18 @@
   }
 
   #play-all-btn {
-    margin-top: 20px;
+    position: fixed;
+    bottom: 20px; /* Distance from the bottom of the screen */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Center the button */
+    z-index: 1001; /* Ensure the button is on top of other content */
+    background-color: #4CAF50; /* Button color */
+    color: white; /* Text color */
+    padding: 12px 20px; /* Padding around the text */
+    border-radius: 50px; /* Optional: Rounded corners */
+    font-size: 1.2rem; /* Font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth hover effect */
   }
   
   #play-all-btn:hover {
