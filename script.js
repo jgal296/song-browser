@@ -31,3 +31,21 @@ document.addEventListener("DOMContentLoaded", () => {
     const mainContent = document.getElementById("main-content");
     mainContent.classList.add("fade-in");
 });
+
+// Queue expansion
+document.addEventListener("DOMContentLoaded", () => {
+  const queueContainer = document.getElementById("queue-container");
+  const queueList = document.getElementById("queue-list");
+
+  queueContainer.addEventListener("click", () => {
+      queueContainer.classList.toggle("expanded");
+
+      if (queueContainer.classList.contains("expanded")) {
+          // Add a delay before showing each queue item
+          const items = queueList.querySelectorAll("li");
+          items.forEach((item, index) => {
+              item.style.transitionDelay = `${index * 0.1}s`;
+          });
+      }
+  });
+});
