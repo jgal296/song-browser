@@ -219,6 +219,13 @@
     padding: 20px; /* Adds space around the entire page */
   }
 
+  #songs-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
   #songs-container {
     display: flex;
     flex-direction: column;
@@ -241,12 +248,6 @@
     /* Smooth scrolling */
     scrollbar-width: thin;
     scrollbar-color: #888 #f1f1f1;
-  }
-
-  @media (max-width: 768px) {
-    #songs-container {
-        margin-top: 10px;
-    }
   }
   
   /* Scrollbar for Webkit Browsers (Chrome, Edge, Safari) */
