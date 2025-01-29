@@ -71,8 +71,12 @@
 
   <!-- Queue Display -->
   <div id="queue-container">
-    <h3>Queue</h3>
-    <ul id="queue-list"></ul>
+    <div id="queue-header">
+        Queue <span id="queue-toggle">▼</span>
+    </div>
+    <div id="queue-content">
+        <ul id="queue-list"></ul>
+    </div>
   </div>
 
   <!-- Fixed Audio Player -->
@@ -189,6 +193,10 @@
           document.body.appendChild(versionDiv);
       };
   </script>
+
+  <script src="script.js"></script>
+  </body>
+  </html>
 
 </body>
 </html>

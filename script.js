@@ -33,18 +33,20 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // Queue expansion
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
   const queueContainer = document.getElementById("queue-container");
+  const queueToggle = document.getElementById("queue-toggle");
   const queueContent = document.getElementById("queue-content");
-  const queueTitle = document.getElementById("queue-title");
 
-  queueContainer.addEventListener("click", () => {
+  queueContainer.addEventListener("click", function () {
       queueContainer.classList.toggle("expanded");
 
       if (queueContainer.classList.contains("expanded")) {
-          queueTitle.innerHTML = "Queue ▲"; // Change arrow direction
+          queueContent.style.maxHeight = "300px"; // Adjust as needed
+          queueToggle.innerHTML = "▲"; // Change arrow to up
       } else {
-          queueTitle.innerHTML = "Queue ▼";
+          queueContent.style.maxHeight = "0";
+          queueToggle.innerHTML = "▼"; // Change arrow to down
       }
   });
 });
