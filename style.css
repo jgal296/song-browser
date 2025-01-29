@@ -233,6 +233,10 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     max-width: 90%;
     width: 320px;
+
+    /* Enable scrolling */
+    max-height: 400px;
+    overflow-y: auto;
   }
   
   .song:hover {
