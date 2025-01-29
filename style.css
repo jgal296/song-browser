@@ -133,7 +133,7 @@
   .song {
       margin-bottom: 20px; /* Adds space between audio containers */
       padding: 10px; /* Optional: Adds padding inside the container */
-      background-color: rgba(150, 150, 150, 0.144); /* Optional: Adds a subtle background */
+      background-color: rgba(255, 255, 255, 0.8); /* Optional: Adds a subtle background */
       border-radius: 8px; /* Optional: Rounded corners */
   }
 
@@ -229,6 +229,10 @@
   #songs-container {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    text-align: left;
     gap: 15px;
   }
   
