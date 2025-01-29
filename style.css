@@ -460,11 +460,14 @@
   }
 
   .add-to-queue-btn {
+    display: flex;  /* Use flexbox for centering */
+    justify-content: center; /* Horizontally center */
+    align-items: center; /* Vertically center */
     background-color: #4CAF50; /* Green background */
     border: none;
     color: white;
-    font-size: 16px;
-    padding: 8px 12px;
+    font-size: 18px;
+    padding: 0;
     text-align: center;
     cursor: pointer;
     border-radius: 50%;
@@ -484,16 +487,7 @@
   }
 
   #play-all-btn {
-    background-color: #4CAF50; /* Green background */
-    border: none;
-    color: white;
-    font-size: 16px;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    display: inline-block;
-    margin-top: 20px; /* Add margin at the top to prevent it from being cut off */
-    position: relative; /* Ensure it doesn’t overlap with other elements */
+    margin-top: 20px;
   }
   
   #play-all-btn:hover {
