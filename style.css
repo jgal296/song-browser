@@ -221,3 +221,39 @@
   .fade-out {
     animation: fadeOut 0.5s ease forwards;
   }
+
+  #songs-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .song {
+    background: #444;
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.3s ease;
+  }
+  
+  .song:hover {
+    background: #666;
+  }
+  
+  #audio-player {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #222;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  #audio-player audio {
+    width: 100%;
+  }
