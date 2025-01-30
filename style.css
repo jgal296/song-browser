@@ -482,6 +482,8 @@ border: none;
 border-radius: 50%; /* Circular buttons */
 font-size: 20px; /* Ensures text/icon is the same size */
 cursor: pointer;
+color: white; /* White text color */
+background-color: #42a57f; /* Blue-green background */
 flex-shrink: 0; /* Prevents the button from resizing */
 }
 
@@ -492,12 +494,6 @@ flex-shrink: 0; /* Prevents the button from resizing */
 
 .add-to-queue-btn:hover {
   background-color: #45a049; /* Darker green on hover */
-}
-
-/* Download Button */
-.download-btn {
-  background-color: #42a57f; /* Blue-green background */
-  color: white;
 }
 
 /* Hover Effects */
