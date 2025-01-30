@@ -29,8 +29,14 @@ def generate_song_html():
             song_html = f'''
             <div class="song" onclick="addToQueueAndPlay('{file_path}', '{song_name}')" data-src="{file_path}">
               <h2>{song_name} <span class="song-time">({duration})</span></h2>
-              <button class="download-btn" onclick="event.stopPropagation(); downloadSong('{file_path}')">⬇</button>
-               <button class="add-to-queue-btn" onclick="event.stopPropagation(); addToQueue('{file_path}', '{song_name}')">+</button>
+              <button class="download-btn" onclick="event.stopPropagation(); downloadSong('{file_path}')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+              </button>
+              <button class="add-to-queue-btn" onclick="event.stopPropagation(); addToQueue('{file_path}', '{song_name}')">+</button>
             </div>
             '''
             song_entries.append(song_html)
