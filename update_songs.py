@@ -27,7 +27,7 @@ def generate_song_html():
             duration = get_song_duration(file_path)
             
             song_html = f'''
-            <div class="song" onclick="addToQueue('{file_path}', '{song_name}')" data-src="{file_path}">
+            <div class="song" onclick="addToQueueAndPlay('{file_path}', '{song_name}')" data-src="{file_path}">
               <h2>{song_name} <span class="song-time">({duration})</span></h2>
               <button class="download-btn" onclick="event.stopPropagation(); downloadSong('{file_path}')">⬇</button>
                <button class="add-to-queue-btn" onclick="event.stopPropagation(); addToQueue('{file_path}', '{song_name}')">+</button>
