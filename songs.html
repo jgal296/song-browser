@@ -154,6 +154,11 @@
   </div>
 
   <script>
+    let queue = [];
+    let currentSongIndex = -1;
+    let loopMode = false;
+    let shuffleMode = false;
+
     const audioPlayer = document.getElementById("player");
     const audioSource = document.getElementById("audio-source");
     const currentSongTitle = document.getElementById("current-song-title");
@@ -173,7 +178,12 @@
     }
 
     function addToQueueAndPlay(songPath, songTitle) {
-      addToQueue(songPath, songTitle, true); // true means play immediately
+      // Clear queue and add only this song
+      queue = [{ path: songPath, title: songTitle }];
+      currentSongIndex = 0;
+      
+      updateQueueDisplay();
+      playSongAtIndex(0);
     }
 
     function moveToTopOfQueue(songPath, songTitle) {
@@ -193,13 +203,13 @@
     }
 
     function updateQueueDisplay() {
-        queueList.innerHTML = "";
-        queue.forEach((song, index) => {
-            let li = document.createElement("li");
-            li.textContent = song.title;
-            li.onclick = () => playSongAtIndex(index);
-            queueList.appendChild(li);
-        });
+      queueList.innerHTML = "";
+      queue.forEach((song, index) => {
+          let li = document.createElement("li");
+          li.textContent = song.title;
+          li.onclick = () => playSongAtIndex(index);
+          queueList.appendChild(li);
+      });
     }
 
     function playNextSong() {
@@ -208,19 +218,21 @@
         playSongAtIndex(currentSongIndex);
     }
 
-    function playSongAtIndex(index) {
-      if (index >= queue.length) return;  // Exit if index is out of bounds
+  function playSongAtIndex(index) {
+      if (index >= queue.length) return;
 
       currentSongIndex = index;
-      
-      // Update audio source and title
+
+      // Set audio source
       audioSource.src = queue[index].path;
       currentSongTitle.textContent = queue[index].title;
-      
-      // Ensure the audio player loads and plays the song
-      audioPlayer.load();  // Reload the audio source
-      audioPlayer.play();  // Play the song
-    }
+
+      // Force play
+      audioPlayer.load();  
+      audioPlayer.play()
+          .then(() => console.log("Playing: " + queue[index].title))
+          .catch(error => console.error("Playback error:", error));
+  }
 
     function skipSong() {
         if (loopMode) {
