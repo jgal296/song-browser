@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const queueToggle = document.getElementById("queue-toggle");
   const queueContent = document.getElementById("queue-content");
 
-  queueToggle.addEventListener("click", function () {  // Corrected targeting here
+  queueContainer.addEventListener("click", function () {  // Corrected targeting here
       queueContainer.classList.toggle("expanded");
 
       // Update the arrow direction based on the queue's expanded state
