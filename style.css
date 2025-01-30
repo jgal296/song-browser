@@ -234,7 +234,7 @@ color: #000000; /* Change this to your preferred color */
   justify-content: left;
   margin: 0 auto; /* Center it */
   padding-top: 0;
-  margin-top: -30px !important; /* Prevent unintended margin */
+  margin-top: 0px !important; /* Prevent unintended margin */
   text-align: left;
   gap: 15px;
   background-color: rgba(255, 255, 255, 0.8);
@@ -243,6 +243,7 @@ color: #000000; /* Change this to your preferred color */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   max-width: 400px;
   width: 360px; /* Increased width */
+  transform: translateY(-30px);
   
   /* Prevent unintended margin above it */
   margin-top: 0 !important;
