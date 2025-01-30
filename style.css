@@ -506,6 +506,14 @@ background: #555; /* Slightly darker on hover */
   outline-offset: 2px;
 }
 
+.download-btn svg {
+  width: 24px;
+  height: 24px;
+  fill: white !important; /* Override any inherited styles */
+  stroke: white !important; /* Ensure visibility */
+  display: block; /* Ensures it takes up space */
+}
+
 #play-all-btn {
   display: block;
   width: fit-content;
