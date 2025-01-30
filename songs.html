@@ -154,7 +154,6 @@
   </div>
 
   <script>
-    let queue = [];
     let currentSongIndex = -1;
     let loopMode = false;
     let shuffleMode = false;
@@ -214,12 +213,17 @@
     }
 
     function playSongAtIndex(index) {
-        if (index >= queue.length) return;
-        currentSongIndex = index;
-        audioSource.src = queue[index].path;
-        currentSongTitle.textContent = queue[index].title;
-        audioPlayer.load();
-        audioPlayer.play();
+      if (index >= queue.length) return;  // Exit if index is out of bounds
+
+      currentSongIndex = index;
+      
+      // Update audio source and title
+      audioSource.src = queue[index].path;
+      currentSongTitle.textContent = queue[index].title;
+      
+      // Ensure the audio player loads and plays the song
+      audioPlayer.load();  // Reload the audio source
+      audioPlayer.play();  // Play the song
     }
 
     function skipSong() {

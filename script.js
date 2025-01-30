@@ -48,14 +48,15 @@ document.addEventListener("DOMContentLoaded", function () {
   const queueToggle = document.getElementById("queue-toggle");
   const queueContent = document.getElementById("queue-content");
 
-  queueToggle.addEventListener("click", function () {
+  queueToggle.addEventListener("click", function () {  // Corrected targeting here
       queueContainer.classList.toggle("expanded");
 
+      // Update the arrow direction based on the queue's expanded state
       if (queueContainer.classList.contains("expanded")) {
-          queueContent.style.maxHeight = "300px"; // Adjust as needed
+          queueContent.style.maxHeight = "300px"; // Adjust as needed for smooth animation
           queueToggle.innerHTML = "▲"; // Change arrow to up
       } else {
-          queueContent.style.maxHeight = "0";
+          queueContent.style.maxHeight = "0";  // Collapse the queue
           queueToggle.innerHTML = "▼"; // Change arrow to down
       }
   });
@@ -65,18 +66,18 @@ document.addEventListener("DOMContentLoaded", function () {
 document.getElementById("play-all-btn").addEventListener("click", function() {
   // Clear the current queue before adding all songs
   queue = [];
-  updateQueueDisplay();
-
+  updateQueueDisplay();  // Ensure queue is updated visually first
+  
   // Get all song paths from the song elements and add them to the queue
   const songs = document.querySelectorAll(".song");
   songs.forEach(song => {
       const songPath = song.getAttribute("data-src");
-      const songTitle = song.querySelector("h2").innerText.trim();  // FIXED: Get full song name
+      const songTitle = song.querySelector("h2").innerText.trim();
       addToQueue(songPath, songTitle);  // Add to the queue
   });
 
-  // Start playing the first song
+  // After updating the queue, start playing the first song
   if (queue.length > 0) {
-    playNextSong();  // Start playing the next song after adding them all
-}
+    playNextSong();  // Now start playing the first song
+  }
 });
