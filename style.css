@@ -483,13 +483,9 @@ background: #555; /* Slightly darker on hover */
   font-size: 20px; /* Ensures text/icon is the same size */
   cursor: pointer;
   color: white; /* White text color */
+  fill: white; /* White icon color */
   background-color: #42a57f; /* Blue-green background */
   flex-shrink: 0; /* Prevents the button from resizing */
-}
-
-.download-btn {
-  fill: white !important; /* Override any inherited styles */
-  stroke: white !important; /* Ensure visibility */
 }
 
 .add-to-queue-btn:hover {
@@ -504,14 +500,6 @@ background: #555; /* Slightly darker on hover */
 .add-to-queue-btn:focus, .download-btn:focus {
   outline: 2px solid #4CAF50;
   outline-offset: 2px;
-}
-
-.download-btn svg {
-  width: 24px;
-  height: 24px;
-  fill: white !important; /* Override any inherited styles */
-  stroke: white !important; /* Ensure visibility */
-  display: block; /* Ensures it takes up space */
 }
 
 #play-all-btn {
