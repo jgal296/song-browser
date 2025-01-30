@@ -320,22 +320,7 @@
     color: #ccc;
     margin-left: 10px;
   }
-  
-  .download-btn {
-    background: #42a57f;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 18px;
-    margin-left: 10px;
-    transition: background 0.3s ease;
-  }
-  
-  .download-btn:hover {
-    background: #2f755a;
-  }
+
 
 /* Queue Container */
 #queue-container {
@@ -459,29 +444,41 @@
     width: 80%;
   }
 
+  /* General Button Styling */
+.add-to-queue-btn, .download-btn {
+  width: 40px; /* Fixed width */
+  height: 40px; /* Fixed height */
+  display: flex;  /* Use flexbox for centering */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  border: none;
+  border-radius: 50%; /* Circular buttons */
+  font-size: 16px; /* Ensures text/icon is the same size */
+  cursor: pointer;
+  flex-shrink: 0; /* Prevents the button from resizing */
+}
+
   .add-to-queue-btn {
-    display: flex;  /* Use flexbox for centering */
-    justify-content: center; /* Horizontally center */
-    align-items: center; /* Vertically center */
     background-color: #4CAF50; /* Green background */
-    border: none;
     color: white;
-    font-size: 18px;
-    padding: 0;
-    text-align: center;
-    cursor: pointer;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    line-height: 24px;
-    display: inline-block;
   }
   
   .add-to-queue-btn:hover {
     background-color: #45a049; /* Darker green on hover */
   }
   
-  .add-to-queue-btn:focus {
+  /* Download Button */
+  .download-btn {
+    background-color: #42a57f; /* Blue-green background */
+    color: white;
+  }
+
+  /* Hover Effects */
+  .add-to-queue-btn:hover, .download-btn:hover {
+    opacity: 0.8; /* Slight transparency on hover */
+  }
+
+  .add-to-queue-btn:focus, .download-btn:focus {
     outline: 2px solid #4CAF50;
     outline-offset: 2px;
   }
