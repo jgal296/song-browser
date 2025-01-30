@@ -216,10 +216,6 @@ button:active {
 color: #000000; /* Change this to your preferred color */
 }
 
-#songs-page {
-  padding: 20px; /* Adds space around the entire page */
-}
-
 #songs-wrapper {
   display: flex;
   justify-content: center;
