@@ -487,12 +487,9 @@ background: #555; /* Slightly darker on hover */
   flex-shrink: 0; /* Prevents the button from resizing */
 }
 
-.download-btn svg {
-  width: 24px;
-  height: 24px;
+.download-btn {
   fill: white !important; /* Override any inherited styles */
   stroke: white !important; /* Ensure visibility */
-  display: block; /* Ensures it takes up space */
 }
 
 .add-to-queue-btn:hover {
