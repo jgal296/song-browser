@@ -1,7 +1,17 @@
-// JavaScript file can be used for future enhancements (e.g., animations, or song lists)
+let queue = [];
+let currentSongIndex = -1;
+let loopMode = false;
+let shuffleMode = false;
+
 // Select the menu toggle button and sidebar
 const menuToggle = document.getElementById("menu-toggle");
 const sidebar = document.getElementById("sidebar");
+const audioPlayer = document.getElementById("player");
+const audioSource = document.getElementById("audio-source");
+const currentSongTitle = document.getElementById("current-song-title");
+const queueList = document.getElementById("queue-list");
+const loopBtn = document.getElementById("loop-btn");
+const shuffleBtn = document.getElementById("shuffle-btn");
 
 // Add a click event to toggle the sidebar
 menuToggle.addEventListener("click", () => {
@@ -61,7 +71,7 @@ document.getElementById("play-all-btn").addEventListener("click", function() {
   const songs = document.querySelectorAll(".song");
   songs.forEach(song => {
       const songPath = song.getAttribute("data-src");
-      const songTitle = song.querySelector("h2").innerText.split(" ")[0];  // Get song name from h2
+      const songTitle = song.querySelector("h2").innerText.trim();  // FIXED: Get full song name
       addToQueue(songPath, songTitle);  // Add to the queue
   });
 

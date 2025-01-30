@@ -1,420 +1,444 @@
 /* Basic reset */
-* {
-    margin: 0;
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Sidebar Navigation */
+#sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 100%;
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding-top: 70px; /* Add space below the hamburger */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    transform: translateX(-100%); /* Default: Hidden off-screen */
+    transition: transform 0.3s ease; /* Smooth sliding */
+    z-index: 999; /* Ensure it's above main content */
+}
+
+/* Sidebar Visible (When open) */
+#sidebar.open {
+    transform: translateX(0); /* Slide in from the left */
+}
+
+#sidebar ul {
+    list-style: none; /* Remove bullets */
     padding: 0;
-    box-sizing: border-box;
-  }
-  
-  /* Sidebar Navigation */
-  #sidebar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 200px;
-      height: 100%;
-      background-color: #333;
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      padding-top: 70px; /* Add space below the hamburger */
-      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-      transform: translateX(-100%); /* Default: Hidden off-screen */
-      transition: transform 0.3s ease; /* Smooth sliding */
-      z-index: 999; /* Ensure it's above main content */
-  }
-  
-  /* Sidebar Visible (When open) */
-  #sidebar.open {
-      transform: translateX(0); /* Slide in from the left */
-  }
-  
-  #sidebar ul {
-      list-style: none; /* Remove bullets */
-      padding: 0;
-      margin: 0;
-  }
-  
-  #sidebar ul li {
-      margin: 10px 0; /* Add space between buttons */
-  }
-  
-  #sidebar ul li a {
-      color: #fff; /* Button text color */
-      text-decoration: none; /* Remove underline */
-      padding: 10px 15px; /* Button padding */
-      display: block; /* Make the links fill the container */
-      border-radius: 5px; /* Optional: Rounded edges */
-      transition: background-color 0.3s ease; /* Smooth hover effect */
-  }
-  
-  #sidebar ul li a:hover {
-      background-color: #575757; /* Darker color on hover */
-  }
-  
-  html, body {
-      height: 100%; /* Ensure full height of the viewport */
-      margin: 0; /* Remove any default margin */
-      overflow: hidden; /* Prevent scrolling */
-  }
-  
-  body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-image: url('background.png');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      height: 100vh;
-      margin: 0;
-  }
-  
-  #landing-page {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      background-color: rgba(255, 255, 255, 0.8);
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      max-width: 90%;
-      width: 320px;
-      margin: 0 auto;
-  }
-  
-  #logo {
-      width: 200px;
-      height: auto;
-      margin-bottom: 20px;
-  }
-  
-  h1 {
-      font-size: 1.5rem;
-      margin-bottom: 10px;
-  }
-  
-  p {
-      font-size: 1rem;
-      margin-bottom: 20px;
-  }
-  
-  button {
-      background-color: #4CAF50;
-      color: white;
-      padding: 12px 20px;
-      border: none;
-      border-radius: 5px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background-color 0.3s;
-  }
-  
-  button:hover {
-      background-color: #45a049;
-  }
-  
-  button:active {
-      background-color: #3e8e41;
-  }
-  
-  #version {
-      position: fixed;
-      top: 10px;
-      right: 10px;
-      background-color: rgba(0, 0, 0, 0.5);
-      color: white;
-      padding: 5px 10px;
-      font-size: 12px;
-      border-radius: 5px;
-      z-index: 1000;
-  }
-  
-  /* Hamburger Menu */
-  #menu-toggle {
-      display: block;
-      position: fixed;
-      top: 10px;
-      left: 10px;
-      background-color: #333;
-      color: #fff;
-      border: none;
-      font-size: 24px;
-      padding: 10px;
-      border-radius: 5px;
-      cursor: pointer;
-      z-index: 1001; /* Ensure it's above sidebar */
-  }
-  
-  /* Media Query for Mobile */
-  @media (max-width: 768px) {
-      #sidebar {
-          width: 200px;
-          transform: translateX(-100%); /* Hidden by default */
-      }
-  
-      #menu-toggle {
-          display: block; /* Show hamburger menu */
-      }
-  
-      #sidebar.open {
-          transform: translateX(0); /* Slide in when toggled */
-      }
-  
-      #sidebar ul {
-          padding-top: 30px; /* Add space for mobile menu items */
-      }
-  }
-  
-  #about-page {
-      padding: 20px;
-      background-color: rgba(255, 255, 255, 0.9); /* Slight transparency */
-      max-width: 800px;
-      margin: 0 auto; /* Center the content */
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      border-radius: 8px;
-  }
+    margin: 0;
+}
 
-  #about-page h1 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-  }
+#sidebar ul li {
+    margin: 10px 0; /* Add space between buttons */
+}
 
-  #about-page p {
-      font-size: 1.2rem;
-      line-height: 1.6;
-  }
+#sidebar ul li a {
+    color: #fff; /* Button text color */
+    text-decoration: none; /* Remove underline */
+    padding: 10px 15px; /* Button padding */
+    display: block; /* Make the links fill the container */
+    border-radius: 5px; /* Optional: Rounded edges */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+}
 
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-  
-  @keyframes fadeOut {
-    from {
-      opacity: 1;
-    }
-    to {
-      opacity: 0;
-    }
-  }
-  
-  .fade-in {
-    animation: fadeIn 0.5s ease forwards;
-  }
-  
-  .fade-out {
-    animation: fadeOut 0.5s ease forwards;
-  }
+#sidebar ul li a:hover {
+    background-color: #575757; /* Darker color on hover */
+}
 
-  .song h2 {
-  color: #000000; /* Change this to your preferred color */
-  }
+html, body {
+    height: 100%; /* Ensure full height of the viewport */
+    margin: 0; /* Remove any default margin */
+    overflow: hidden; /* Prevent scrolling */
+}
 
-  #songs-page {
-    padding: 20px; /* Adds space around the entire page */
-  }
-
-  #songs-wrapper {
+body {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-image: url('background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     height: 100vh;
-  }
+    margin: 0;
+}
 
-  #songs-container {
+#landing-page {
     display: flex;
     flex-direction: column;
-    align-items: left;
-    justify-content: left;
-    margin: 0 auto;
-    margin-top: -50px;
-    text-align: left;
-    gap: 15px;
+    justify-content: center;
+    align-items: center;
     background-color: rgba(255, 255, 255, 0.8);
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     max-width: 90%;
     width: 320px;
+    margin: 0 auto;
+}
 
-    /* Enable scrolling */
-    max-height: 400px;
-    overflow-y: auto;
+#logo {
+    width: 200px;
+    height: auto;
+    margin-bottom: 20px;
+}
 
-    /* Smooth scrolling */
-    scrollbar-width: thin;
-    scrollbar-color: #888 #f1f1f1;
-  }
-  
-  /* Scrollbar for Webkit Browsers (Chrome, Edge, Safari) */
-  #songs-container::-webkit-scrollbar {
-    width: 8px; /* Adjust width */
-  }
+h1 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
 
-  #songs-container::-webkit-scrollbar-track {
-    background: #f1f1f1; /* Light gray background */
-    border-radius: 10px;
-  }
+p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
 
-  #songs-container::-webkit-scrollbar-thumb {
-    background: #888; /* Darker gray scrollbar */
-    border-radius: 10px;
-    transition: background 0.3s ease;
-  }
-
-  #songs-container::-webkit-scrollbar-thumb:hover {
-    background: #555; /* Slightly darker on hover */
-  }
-
-  .song:hover {
-    background: #666;
-  }
-
-  .song {
-    margin-bottom: 20px; /* Adds space between audio containers */
-    padding: 10px; /* Optional: Adds padding inside the container */
-    background-color: rgba(255, 255, 255, 0.8); /* Optional: Adds a subtle background */
-    border-radius: 8px; /* Optional: Rounded corners */
-    background: #444;
+button {
+    background-color: #4CAF50;
     color: white;
-    padding: 15px;
-    border-radius: 8px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
     cursor: pointer;
-    text-align: center;
-    transition: background 0.3s ease;
-    display: flex;
-    justify-content: space-between;
-    align-items: left;
-  }
-  
-  .song:hover {
-    background: rgba(0, 0, 0, 0.1);
-  }
+    transition: background-color 0.3s;
+}
 
-  .song-time {
-    font-size: 0.8rem;
-    color: gray;
-    margin-left: 10px;
-  }
+button:hover {
+    background-color: #45a049;
+}
 
-  .song:hover {
-    background: #666;
-  }
-  
-  .song h2 {
-    font-size: 18px;
-    margin: 0;
-    flex-grow: 1;
-    text-align: left;
+button:active {
+    background-color: #3e8e41;
+}
+
+#version {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
     color: white;
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 5px;
+    z-index: 1000;
+}
+
+/* Hamburger Menu */
+#menu-toggle {
+    display: block;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    font-size: 24px;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1001; /* Ensure it's above sidebar */
+}
+
+/* Media Query for Mobile */
+@media (max-width: 768px) {
+    #sidebar {
+        width: 200px;
+        transform: translateX(-100%); /* Hidden by default */
+    }
+
+    #menu-toggle {
+        display: block; /* Show hamburger menu */
+    }
+
+    #sidebar.open {
+        transform: translateX(0); /* Slide in when toggled */
+    }
+
+    #sidebar ul {
+        padding-top: 30px; /* Add space for mobile menu items */
+    }
+}
+
+#about-page {
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9); /* Slight transparency */
+    max-width: 800px;
+    margin: 0 auto; /* Center the content */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+#about-page h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+#about-page p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-  
-  .song-time {
-    font-size: 14px;
-    color: #ccc;
-    margin-left: 10px;
+  to {
+    opacity: 1;
   }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+.fade-out {
+  animation: fadeOut 0.5s ease forwards;
+}
+
+.song h2 {
+color: #000000; /* Change this to your preferred color */
+}
+
+#songs-page {
+  padding: 20px; /* Adds space around the entire page */
+}
+
+#songs-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#songs-container {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: left;
+  justify-content: left;
+  margin: 0 auto;
+  margin-top: -50px;
+  text-align: left;
+  gap: 15px;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 95%;
+  width: 340px;
+
+  /* Enable scrolling */
+  max-height: 400px;
+  overflow-y: auto;
+
+  /* Smooth scrolling */
+  scrollbar-width: thin;
+  scrollbar-color: #888 #f1f1f1;
+}
+
+/* Scrollbar for Webkit Browsers (Chrome, Edge, Safari) */
+#songs-container::-webkit-scrollbar {
+  width: 8px; /* Adjust width */
+}
+
+#songs-container::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Light gray background */
+  border-radius: 10px;
+}
+
+#songs-container::-webkit-scrollbar-thumb {
+  background: #888; /* Darker gray scrollbar */
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+#songs-container::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Slightly darker on hover */
+}
+
+.song:hover {
+  background: #666;
+}
+
+.song {
+  margin-bottom: 20px; /* Adds space between audio containers */
+  padding: 10px; /* Optional: Adds padding inside the container */
+  background-color: rgba(255, 255, 255, 0.8); /* Optional: Adds a subtle background */
+  border-radius: 8px; /* Optional: Rounded corners */
+  background: #444;
+  color: white;
+  padding: 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  transition: background 0.3s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: left;
+}
+
+.song:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.song-time {
+  font-size: 0.8rem;
+  color: gray;
+  margin-left: 10px;
+}
+
+.song:hover {
+  background: #666;
+}
+
+.song h2 {
+  font-size: 18px;
+  margin: 0;
+  flex-grow: 1;
+  text-align: left;
+  color: white;
+}
+
+.song-time {
+  font-size: 14px;
+  color: #ccc;
+  margin-left: 10px;
+}
 
 
 /* Queue Container */
 #queue-container {
-    position: fixed;
-    right: 10px;
-    top: 50px;
-    width: 200px;
-    background: rgba(255, 255, 255, 0.8);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-    cursor: pointer;
-    padding: 5px 15px;
-    max-height: 40px; /* Default collapsed */
-    overflow: hidden;
-    transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
+  position: fixed;
+  right: 10px;
+  top: 50px;
+  width: 200px;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 5px 15px;
+  max-height: 300px; /* Limit Height */
+  overflow-y: auto; /* Enable Scrolling */
+  transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
 }
 
 #queue-header {
-    display: flex;
-    justify-content: space-between; /* Distribute space between elements */
-    align-items: center; /* Vertically center the items */
-    font-size: 1.2rem;
-    color: rgb(0, 0, 0);
-    padding: 10px;
-    cursor: pointer;
+  display: flex;
+  justify-content: space-between; /* Distribute space between elements */
+  align-items: center; /* Vertically center the items */
+  font-size: 1.2rem;
+  color: rgb(0, 0, 0);
+  padding: 10px;
+  cursor: pointer;
 }
 
 /* Expanded Queue */
 #queue-container.expanded {
-    max-height: 300px; /* Adjust based on content */
-    padding: 15px;
+  max-height: 300px; /* Adjust based on content */
+  padding: 15px;
 }
 
 /* Queue Content - Hidden Initially */
 #queue-content {
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out;
 }
 
 /* Make Queue Content Visible When Expanded */
 #queue-container.expanded #queue-content {
-    max-height: 300px;
-    opacity: 1;
+  max-height: 300px;
+  opacity: 1;
 }
 
-  #queue-controls {
-    display: flex;
-    justify-content: center;
-    margin: 10px 0;
-  }
+#queue-controls {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+}
 
-  #queue-controls button {
-    background: #007bff;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    margin: 5px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s;
-  }
+#queue-controls button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
 
-  #queue-controls button:hover {
-    background: #0056b3;
-  }
+#queue-controls button:hover {
+  background: #0056b3;
+}
 
 /* Queue List Items */
 #queue-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
+  max-height: 250px /* Keep it within the container */;
+  overflow-y: auto; /* Enable Scrolling */;
+  list-style: none;
+  padding: 0;
+  padding-right: 5px;
+  margin: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Scrollbar Styles - Same as Songs List */
+#queue-list::-webkit-scrollbar {
+width: 8px; /* Adjust width */
+}
+
+#queue-list::-webkit-scrollbar-track {
+background: #f1f1f1; /* Light gray background */
+border-radius: 10px;
+}
+
+#queue-list::-webkit-scrollbar-thumb {
+background: #888; /* Darker gray scrollbar */
+border-radius: 10px;
+transition: background 0.3s ease;
+}
+
+#queue-list::-webkit-scrollbar-thumb:hover {
+background: #555; /* Slightly darker on hover */
 }
 
 /* Show List Items with Staggered Animation */
 #queue-container.expanded #queue-list {
-    opacity: 1;
+  opacity: 1;
 }
 
-  #queue-list li {
-    opacity: 0;
-    padding: 5px;
-    cursor: pointer;
-    transform: translateY(10px);
-    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
-  }
+#queue-list li {
+  opacity: 0;
+  padding: 5px;
+  cursor: pointer;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
 
 /* Staggered Fade-in for Queue Items */
 #queue-container.expanded #queue-list li {
-    opacity: 1;
-    transform: translateY(0);
+  opacity: 1;
+  transform: translateY(0);
 }
 
 #queue-container.expanded #queue-list li:nth-child(1) { transition-delay: 0.1s; }
@@ -424,85 +448,88 @@
 #queue-container.expanded #queue-list li:nth-child(5) { transition-delay: 0.5s; }
 
 
-  #queue-list li:hover {
-    background: rgba(255, 255, 255, 0.2);
-  }
-
-  #audio-player {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: #222;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
-  }
-
-  #audio-player audio {
-    width: 80%;
-  }
-
-  /* General Button Styling */
-.add-to-queue-btn, .download-btn {
-  width: 40px; /* Fixed width */
-  height: 40px; /* Fixed height */
-  display: flex;  /* Use flexbox for centering */
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  border: none;
-  border-radius: 50%; /* Circular buttons */
-  font-size: 16px; /* Ensures text/icon is the same size */
-  cursor: pointer;
-  flex-shrink: 0; /* Prevents the button from resizing */
+#queue-list li:hover {
+  background: rgba(255, 255, 255, 0.2);
 }
 
-  .add-to-queue-btn {
-    background-color: #4CAF50; /* Green background */
-    color: white;
-  }
-  
-  .add-to-queue-btn:hover {
-    background-color: #45a049; /* Darker green on hover */
-  }
-  
-  /* Download Button */
-  .download-btn {
-    background-color: #42a57f; /* Blue-green background */
-    color: white;
-  }
+#audio-player {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #222;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+}
 
-  /* Hover Effects */
-  .add-to-queue-btn:hover, .download-btn:hover {
-    opacity: 0.8; /* Slight transparency on hover */
-  }
+#audio-player audio {
+  width: 80%;
+}
 
-  .add-to-queue-btn:focus, .download-btn:focus {
-    outline: 2px solid #4CAF50;
-    outline-offset: 2px;
-  }
+/* General Button Styling */
+.add-to-queue-btn, .download-btn {
+width: 40px; /* Fixed width */
+height: 40px; /* Fixed height */
+display: flex;  /* Use flexbox for centering */
+justify-content: center; /* Center horizontally */
+align-items: center; /* Center vertically */
+border: none;
+border-radius: 50%; /* Circular buttons */
+font-size: 16px; /* Ensures text/icon is the same size */
+cursor: pointer;
+flex-shrink: 0; /* Prevents the button from resizing */
+}
 
-  #play-all-btn {
-    position: fixed;
-    top: 100px; /* Distance from the top of the screen */
-    left: 50%; /* Center horizontally */
-    transform: translateX(-50%); /* Center the button */
-    z-index: 1001; /* Ensure the button is on top of other content */
-    background-color: #4CAF50; /* Button color */
-    color: white; /* Text color */
-    padding: 12px 20px; /* Padding around the text */
-    border-radius: 50px; /* Optional: Rounded corners */
-    font-size: 1.2rem; /* Font size */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background-color 0.3s; /* Smooth hover effect */
-  }
-  
-  #play-all-btn:hover {
-    background-color: #45a049; /* Darker green on hover */
-  }
-  
-  #play-all-btn:focus {
-    outline: 2px solid #4CAF50;
-    outline-offset: 2px;
-  }
+.add-to-queue-btn {
+  background-color: #4CAF50; /* Green background */
+  color: white;
+}
+
+.add-to-queue-btn:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+
+/* Download Button */
+.download-btn {
+  background-color: #42a57f; /* Blue-green background */
+  color: white;
+}
+
+/* Hover Effects */
+.add-to-queue-btn:hover, .download-btn:hover {
+  opacity: 0.8; /* Slight transparency on hover */
+}
+
+.add-to-queue-btn:focus, .download-btn:focus {
+  outline: 2px solid #4CAF50;
+  outline-offset: 2px;
+}
+
+#play-all-btn {
+  display: block;
+  width: fit-content;
+  top: 100px; /* Distance from the top of the screen */
+  z-index: 1001; /* Ensure the button is on top of other content */
+  background-color: #4CAF50; /* Button color */
+  color: white; /* Text color */
+  padding: 12px 20px; /* Padding around the text */
+  border-radius: 50px; /* Optional: Rounded corners */
+  font-size: 1.2rem; /* Font size */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s; /* Smooth hover effect */
+}
+
+#play-all-btn:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+
+#play-all-btn:focus {
+  outline: 2px solid #4CAF50;
+  outline-offset: 2px;
+}
+
+#play-all-btn {
+  align-self: flex-start; /* Aligns the button to the left */
+}

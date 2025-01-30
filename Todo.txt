@@ -1,5 +1,0 @@
-rename queue to up next
-add scrolling to queue
-move play all button to the left
-play all shows only first word of songs
-make song container wider
