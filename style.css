@@ -488,7 +488,7 @@
 
   #play-all-btn {
     position: fixed;
-    top: 200px; /* Distance from the top of the screen */
+    top: 100px; /* Distance from the top of the screen */
     left: 50%; /* Center horizontally */
     transform: translateX(-50%); /* Center the button */
     z-index: 1001; /* Ensure the button is on top of other content */
