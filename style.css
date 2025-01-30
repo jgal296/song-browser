@@ -473,23 +473,26 @@ background: #555; /* Slightly darker on hover */
 
 /* General Button Styling */
 .add-to-queue-btn, .download-btn {
-width: 40px; /* Fixed width */
-height: 40px; /* Fixed height */
-display: flex;  /* Use flexbox for centering */
-justify-content: center; /* Center horizontally */
-align-items: center; /* Center vertically */
-border: none;
-border-radius: 50%; /* Circular buttons */
-font-size: 20px; /* Ensures text/icon is the same size */
-cursor: pointer;
-color: white; /* White text color */
-background-color: #42a57f; /* Blue-green background */
-flex-shrink: 0; /* Prevents the button from resizing */
+  width: 40px; /* Fixed width */
+  height: 40px; /* Fixed height */
+  display: flex;  /* Use flexbox for centering */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  border: none;
+  border-radius: 50%; /* Circular buttons */
+  font-size: 20px; /* Ensures text/icon is the same size */
+  cursor: pointer;
+  color: white; /* White text color */
+  background-color: #42a57f; /* Blue-green background */
+  flex-shrink: 0; /* Prevents the button from resizing */
 }
 
-.add-to-queue-btn {
-  background-color: #4CAF50; /* Green background */
-  color: white;
+.download-btn svg {
+  width: 24px;
+  height: 24px;
+  fill: white !important; /* Override any inherited styles */
+  stroke: white !important; /* Ensure visibility */
+  display: block; /* Ensures it takes up space */
 }
 
 .add-to-queue-btn:hover {
