@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const queueToggle = document.getElementById("queue-toggle");
   const queueContent = document.getElementById("queue-content");
 
-  queueContainer.addEventListener("click", function () {
+  queueToggle.addEventListener("click", function () {
       queueContainer.classList.toggle("expanded");
 
       if (queueContainer.classList.contains("expanded")) {
@@ -76,5 +76,7 @@ document.getElementById("play-all-btn").addEventListener("click", function() {
   });
 
   // Start playing the first song
-  playNextSong();
+  if (queue.length > 0) {
+    playNextSong();  // Start playing the next song after adding them all
+}
 });
