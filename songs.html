@@ -310,25 +310,37 @@
           .catch(error => console.error("Playback error:", error));
   }
 
-    function skipSong() {
-        if (loopMode) {
-            playSongAtIndex(currentSongIndex);
-        } else if (shuffleMode) {
-            currentSongIndex = Math.floor(Math.random() * queue.length);
-            playSongAtIndex(currentSongIndex);
-        } else if (currentSongIndex + 1 < queue.length) {
-            removeCurrentSongFromQueue();
-            playSongAtIndex(currentSongIndex + 1);
+  function skipSong() {
+    if (queue.length === 0) {
+        return;
+    }
+
+    if (shuffleMode) {
+        // Pick a random song different from the current one
+        let nextIndex;
+        do {
+            nextIndex = Math.floor(Math.random() * queue.length);
+        } while (nextIndex === currentSongIndex && queue.length > 1);
+        currentSongIndex = nextIndex;
+    } else if (loopMode) {
+        // Loop the current song
+        playSongAtIndex(currentSongIndex);
+        return;
+    } else {
+        // Play the next song in the queue
+        if (currentSongIndex < queue.length - 1) {
+            currentSongIndex++;
         } else {
-            queue = [];
+            // If at the last song, stop playback
             currentSongIndex = -1;
-            updateQueueDisplay();
-            currentSongTitle.textContent = "Select a song to play";
-            audioSource.src = "";
             audioPlayer.pause();
+            return;
         }
     }
 
+        playSongAtIndex(currentSongIndex);
+    }
+    
     audioPlayer.addEventListener("ended", () => {
         if (loopMode) {
             playSongAtIndex(currentSongIndex);
