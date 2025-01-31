@@ -489,8 +489,6 @@ background: #555; /* Slightly darker on hover */
 }
 
 .download-btn {
-  display: flex;  /* Use flexbox for centering */
-  justify-content: center; /* Center horizontally */
   width: 40px; /* Fixed width */
   height: 40px; /* Fixed height */
   background-color: #42a57f; /* Blue-green background */
