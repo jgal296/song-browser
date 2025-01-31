@@ -503,8 +503,7 @@ background: #555; /* Slightly darker on hover */
 .download-btn svg {
   width: 24px; /* Adjust icon size */
   height: 24px;
-  fill: black; /* Ensure it's visible */
-  stroke: black;
+  stroke: rgb(255, 255, 255);
   position: absolute;
   top: 50%;
   left: 50%;
