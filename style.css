@@ -491,9 +491,8 @@ background: #555; /* Slightly darker on hover */
 .download-btn {
   width: 40px; /* Fixed width */
   height: 40px; /* Fixed height */
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
+  display: inline-block;
+  text-align: center;
   background-color: #42a57f; /* Blue-green background */
 }
 
