@@ -472,7 +472,7 @@ background: #555; /* Slightly darker on hover */
 }
 
 /* General Button Styling */
-.add-to-queue-btn, .download-btn {
+.add-to-queue-btn {
   width: 40px; /* Fixed width */
   height: 40px; /* Fixed height */
   display: flex;  /* Use flexbox for centering */
@@ -493,11 +493,11 @@ background: #555; /* Slightly darker on hover */
 }
 
 /* Hover Effects */
-.add-to-queue-btn:hover, .download-btn:hover {
+.add-to-queue-btn:hover {
   opacity: 0.8; /* Slight transparency on hover */
 }
 
-.add-to-queue-btn:focus, .download-btn:focus {
+.add-to-queue-btn:focus {
   outline: 2px solid #4CAF50;
   outline-offset: 2px;
 }
