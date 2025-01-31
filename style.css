@@ -491,15 +491,6 @@ background: #555; /* Slightly darker on hover */
 .download-btn {
   width: 40px; /* Fixed width */
   height: 40px; /* Fixed height */
-  display: flex;  /* Use flexbox for centering */
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  border: none;
-  border-radius: 10;
-  font-size: 20px; /* Ensures text/icon is the same size */
-  cursor: pointer;
-  background-color: #42a57f; /* Blue-green background */
-  flex-shrink: 0; /* Prevents the button from resizing */
 }
 
 .add-to-queue-btn:hover {
