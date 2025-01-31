@@ -268,12 +268,22 @@
       playNextSong(); // Start playing immediately
     }
 
+    function removeCurrentSongFromQueue() {
+      if (currentSongIndex !== -1) {
+        queue.splice(currentSongIndex, 1);
+        updateQueueDisplay();
+      }
+    }
+
     function updateQueueDisplay() {
       queueList.innerHTML = "";
       queue.forEach((song, index) => {
           let li = document.createElement("li");
           li.textContent = song.title;
           li.onclick = () => playSongAtIndex(index);
+          if (index === currentSongIndex) {
+              li.style.fontWeight = "bold";
+          }
           queueList.appendChild(li);
       });
     }
@@ -307,6 +317,7 @@
             currentSongIndex = Math.floor(Math.random() * queue.length);
             playSongAtIndex(currentSongIndex);
         } else if (currentSongIndex + 1 < queue.length) {
+            removeCurrentSongFromQueue();
             playSongAtIndex(currentSongIndex + 1);
         } else {
             queue = [];
@@ -322,7 +333,8 @@
         if (loopMode) {
             playSongAtIndex(currentSongIndex);
         } else {
-            skipSong();
+            removeCurrentSongFromQueue();
+            playNextSong();
         }
     });
 
