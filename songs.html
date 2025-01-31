@@ -329,8 +329,8 @@
     } else {
         // Play the next song in the queue
         if (currentSongIndex < queue.length - 1) {
-            currentSongIndex++;
             removeCurrentSongFromQueue();
+            currentSongIndex++;
             playSongAtIndex(currentSongIndex);
         } else {
             // If at the last song, stop playback
