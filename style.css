@@ -495,7 +495,6 @@ background: #555; /* Slightly darker on hover */
   justify-content: center;
   align-items: center;
   background-color: #42a57f; /* Blue-green background */
-  padding-right: 5px;
 }
 
 .add-to-queue-btn:hover {
