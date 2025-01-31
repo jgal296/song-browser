@@ -492,7 +492,7 @@ background: #555; /* Slightly darker on hover */
   width: 40px; /* Fixed width */
   height: 40px; /* Fixed height */
   display: inline-block;
-  text-align: center;
+  align-items: center;
   background-color: #42a57f; /* Blue-green background */
 }
 
