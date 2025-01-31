@@ -330,6 +330,8 @@
         // Play the next song in the queue
         if (currentSongIndex < queue.length - 1) {
             currentSongIndex++;
+            removeCurrentSongFromQueue();
+            playSongAtIndex(currentSongIndex);
         } else {
             // If at the last song, stop playback
             currentSongIndex = -1;
@@ -340,7 +342,7 @@
 
         playSongAtIndex(currentSongIndex);
     }
-    
+
     audioPlayer.addEventListener("ended", () => {
         if (loopMode) {
             playSongAtIndex(currentSongIndex);
