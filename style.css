@@ -492,8 +492,23 @@ background: #555; /* Slightly darker on hover */
   width: 40px; /* Fixed width */
   height: 40px; /* Fixed height */
   display: inline-block;
-  align-items: center;
+  text-align: center; /* Centers inline content */
+  line-height: 40px; /* Centers vertically */
   background-color: #42a57f; /* Blue-green background */
+  border-radius: 50%; /* Optional: Makes it circular */
+  vertical-align: middle; /* Ensures proper alignment */
+  position: relative; /* Required for precise centering */
+}
+
+.download-btn svg {
+  width: 24px; /* Adjust icon size */
+  height: 24px;
+  fill: black; /* Ensure it's visible */
+  stroke: black;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Perfect centering trick */
 }
 
 .add-to-queue-btn:hover {
