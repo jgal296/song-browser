@@ -234,6 +234,19 @@
             </div>
             
 
+            <div class="song" onclick="addToQueueAndPlay('songs/mockingbird2.wav', 'Mockingbird2')" data-src="songs/mockingbird2.wav">
+              <h2>Mockingbird2 <span class="song-time">(1:27)</span></h2>
+              <button class="download-btn" onclick="event.stopPropagation(); downloadSong('songs/mockingbird2.wav')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+              </button>
+              <button class="add-to-queue-btn" onclick="event.stopPropagation(); addToQueue('songs/mockingbird2.wav', 'Mockingbird2')">+</button>
+            </div>
+            
+
             <div class="song" onclick="addToQueueAndPlay('songs/outliers.wav', 'Outliers')" data-src="songs/outliers.wav">
               <h2>Outliers <span class="song-time">(0:24)</span></h2>
               <button class="download-btn" onclick="event.stopPropagation(); downloadSong('songs/outliers.wav')">
