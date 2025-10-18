@@ -195,6 +195,19 @@
             </div>
             
 
+            <div class="song" onclick="addToQueueAndPlay('songs/logic exists.wav', 'Logic Exists')" data-src="songs/logic exists.wav">
+              <h2>Logic Exists <span class="song-time">(0:59)</span></h2>
+              <button class="download-btn" onclick="event.stopPropagation(); downloadSong('songs/logic exists.wav')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+              </button>
+              <button class="add-to-queue-btn" onclick="event.stopPropagation(); addToQueue('songs/logic exists.wav', 'Logic Exists')">+</button>
+            </div>
+            
+
             <div class="song" onclick="addToQueueAndPlay('songs/make_you_feel_my_love_cover.wav', 'Make You Feel My Love Cover')" data-src="songs/make_you_feel_my_love_cover.wav">
               <h2>Make You Feel My Love Cover <span class="song-time">(1:06)</span></h2>
               <button class="download-btn" onclick="event.stopPropagation(); downloadSong('songs/make_you_feel_my_love_cover.wav')">
